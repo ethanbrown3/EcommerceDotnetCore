@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 namespace final_project_ethanbrown3.Models
 {
     /// <summary>
-    /// Order Model: represents orders placed by customers
+    /// Order Model class: represents orders placed by customers
     /// </summary>
     public class Order
     {

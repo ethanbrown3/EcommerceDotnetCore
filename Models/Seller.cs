@@ -6,6 +6,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace final_project_ethanbrown3.Models
 {
+    /// <summary>
+    /// Seller Model Class: Represents sellers in the application
+    /// </summary>
     public class Seller
     {
         public int Id { get; set; }
