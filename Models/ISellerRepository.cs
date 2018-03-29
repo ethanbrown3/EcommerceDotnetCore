@@ -11,6 +11,6 @@ namespace final_project_ethanbrown3.Models
     public interface ISellerRepository
     {
         IEnumerable<Seller> GetAllSellers();
-        Seller GetSellerById(int pieId);
+        Seller GetSellerById(int orderId);
     }
 }
