@@ -1,1 +1,18 @@
-<h1>Hello World</h1>
+@model HomeViewModel
+
+<h2>@Model.Title</h2>
+
+@foreach(var seller in Model.Sellers)
+{
+    <div class="col-sm-4 col-lg-4 col-md-4">
+        <div class="thumbnail">
+            <div class="caption">
+                <h4>
+                    <a asp-controller="Home" asp-action="Details"
+                        asp-route-id="@seller.Id">@seller.SellerName</a>
+                </h4>
+                <p>@seller.SellerDescription</p>
+            </div>
+        </div>
+    </div>
+}

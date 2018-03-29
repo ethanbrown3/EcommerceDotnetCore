@@ -10,9 +10,9 @@ namespace final_project_ethanbrown3.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ISeller _sellerRepository;
+        private readonly ISellerRepository _sellerRepository;
 
-        public HomeController(ISeller sellerRepository)  // Constructor Injection
+        public HomeController(ISellerRepository sellerRepository)  // Constructor Injection
         {
             _sellerRepository = sellerRepository; 
         }

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using final_project_ethanbrown3.Models;
 
 namespace final_project_ethanbrown3
 {
@@ -15,6 +16,7 @@ namespace final_project_ethanbrown3
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<ISellerRepository, MockSellerRepository>();
             services.AddMvc();
         }
 
@@ -25,7 +27,6 @@ namespace final_project_ethanbrown3
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
-            app.UseAuthentication();
             app.UseMvcWithDefaultRoute();
         }
     }
