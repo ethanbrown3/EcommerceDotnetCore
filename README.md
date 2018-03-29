@@ -2,10 +2,10 @@
 final-project-ethanbrown3 created by GitHub Classroom
 
 DB Schema Diagram v2
-![alt text](https://github.com/web4790-spr-2018/final-project-ethanbrown3/Docs/DBSchema.png "Database Schema")
+![alt text](https://github.com/web4790-spr-2018/final-project-ethanbrown3/blob/master/Docs/DBSchema.png "Database Schema")
 
 Screen Flow Diagram v2
-![alt text](https://github.com/web4790-spr-2018/final-project-ethanbrown3/Docs/ScreenFlow.png "Screen Flow")
+![alt text](https://github.com/web4790-spr-2018/final-project-ethanbrown3/blob/master/Docs/ScreenFlow.png "Screen Flow")
 
 # Final Project
 ## CS-4790 Spring 2018
