@@ -16,11 +16,11 @@ namespace final_project_ethanbrown3.Models
         {
             if (_Sellers == null)
             {
-                InitializePies();
+                InitializeSellers();
             }
         }
 
-        private void InitializePies()
+        private void InitializeSellers()
         {
 	        _Sellers = new List<Seller>
                 {
