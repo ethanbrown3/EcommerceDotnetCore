@@ -8,7 +8,7 @@ namespace final_project_ethanbrown3.Models
     /// <summary>
     /// Order Model Interface
     /// </summary>
-    public interface IOrder
+    public interface IOrderRepository
     {
         IEnumerable<Order> GetAllOrders();
         Order GetOrderById(int pieId);

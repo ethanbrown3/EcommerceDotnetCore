@@ -8,9 +8,9 @@ namespace final_project_ethanbrown3.Models
     /// <summary>
     /// Mock Seller Data Repository
     /// </summary>
-    public class MockSellerRepository
+    public class MockSellerRepository : ISellerRepository
     {
-        private List<Seller> _Sellers;
+        private List< Seller> _Sellers;
 
         public MockSellerRepository()
         {
@@ -29,15 +29,14 @@ namespace final_project_ethanbrown3.Models
                 };
         }
         
-        public IEnumerable<Seller> GetAllPies()
+        public IEnumerable<Seller> GetAllSellers()
         {
             return _Sellers;
         }
 
-        public Seller GetPieById(int sellerId)
+        public Seller GetSellerById(int sellerId)
         {
             return _Sellers.FirstOrDefault(s => s.Id == sellerId);
         }
-    }
     }
 }

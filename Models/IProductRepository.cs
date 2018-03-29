@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 namespace final_project_ethanbrown3.Models
 {
     /// <summary>
-    /// Seller Model Interface
+    /// Product Model Interface
     /// </summary>
-    public interface ISeller
+    public interface IProductRepository
     {
-        IEnumerable<Seller> GetAllSellers();
-        Seller GetSellerById(int pieId);
+        IEnumerable<Product> GetAllProducts();
+        Product GetProductById(int pieId);
     }
 }
