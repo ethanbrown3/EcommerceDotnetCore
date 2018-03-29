@@ -1,0 +1,19 @@
+@model ProductListViewModel
+
+<h2>@Model.Title</h2>
+
+@foreach(var product in Model.Products)
+{
+    <div class="col-sm-4 col-lg-4 col-md-4">
+        <div class="thumbnail">
+            <div class="caption">
+                <img src="@product.ProductImgUrl" alt="@product.ProductName" height="100%" width="100%">
+                <h4>
+                    <a asp-controller="Home" asp-action="ProductList"
+                        asp-route-id="@product.Id">@product.ProductName</a>
+                </h4>
+                <p>@product.ProductDescription</p>
+            </div>
+        </div>
+    </div>
+}

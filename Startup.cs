@@ -17,6 +17,8 @@ namespace final_project_ethanbrown3
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<ISellerRepository, MockSellerRepository>();
+            services.AddTransient<IProductRepository, MockProductRepository>();
+
             services.AddMvc();
         }
 
@@ -27,7 +29,13 @@ namespace final_project_ethanbrown3
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
-            app.UseMvcWithDefaultRoute();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name:"default",
+                    template: "{controller=Home}/{action=Index}/{Id?}"
+                );
+            });
         }
     }
 }
