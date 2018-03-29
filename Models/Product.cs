@@ -17,5 +17,6 @@ namespace final_project_ethanbrown3.Models
         public string ProductImgUrl { get; set; }
         public bool IsEdible { get; set; } 
         public int ProductCount { get; set; }
+        public int SellerId { get; set; }
     }
 }

@@ -11,6 +11,6 @@ namespace final_project_ethanbrown3.Models
     public interface IProductRepository
     {
         IEnumerable<Product> GetAllProducts();
-        Product GetProductById(int pieId);
+        Product GetProductBySellerId(int sellerId);
     }
 }
