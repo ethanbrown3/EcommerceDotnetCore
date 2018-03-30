@@ -14,5 +14,7 @@ namespace final_project_ethanbrown3.Models.Domain
         public int Id { get; set; }
         public string SellerName { get; set; }
         public string SellerDescription { get; set; }
+        
+        public List<Product> Products { get; set; }
     }
 }

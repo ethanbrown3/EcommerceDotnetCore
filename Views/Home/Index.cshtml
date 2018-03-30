@@ -9,7 +9,7 @@
             <div class="caption">
                 <h4>
                     <a asp-controller="Home" asp-action="ProductList"
-                        asp-route-id="@seller.Id">@seller.SellerName</a>
+                        asp-route-id="@seller.Id" asp-route-sellerName="@seller.SellerName">@seller.SellerName</a>
                 </h4>
                 <p>@seller.SellerDescription</p>
             </div>

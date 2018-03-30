@@ -39,7 +39,7 @@ namespace final_project_ethanbrown3.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns>ProductsList View</returns>
-        public IActionResult ProductList(int id)
+        public IActionResult ProductList(int id, string sellerName)
         {
             var products = _productRepository.GetProductsBySellerId(id).OrderBy(p => p.ProductName );
             Console.Write(id);
@@ -48,7 +48,7 @@ namespace final_project_ethanbrown3.Controllers
 
             var productListViewModel = new ProductListViewModel()
             {
-                Title = "Products",
+                Title = sellerName,
                 Products = products.ToList()
             };
             

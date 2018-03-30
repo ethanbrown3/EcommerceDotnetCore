@@ -35,6 +35,11 @@ namespace final_project_ethanbrown3
                     name:"default",
                     template: "{controller=Home}/{action=Index}/{Id?}"
                 );
+                routes.MapRoute(
+                    "ProductList",                                              // Route name
+                    "{controller}/{action}/{Id}/{artistName}",                           // URL with parameters
+                    new { controller = "Home", action = "ProductList", Id = "", artistName = "" }  // Parameter defaults
+                );
             });
         }
     }
