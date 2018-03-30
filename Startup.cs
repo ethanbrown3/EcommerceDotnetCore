@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using final_project_ethanbrown3.Models;
+using final_project_ethanbrown3.Models.DomainServices;
 
 namespace final_project_ethanbrown3
 {

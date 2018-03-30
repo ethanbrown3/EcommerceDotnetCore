@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace final_project_ethanbrown3.Models
+namespace final_project_ethanbrown3.Models.Domain
 {
     /// <summary>
     /// Product Model: represents seller's products in inventory

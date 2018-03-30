@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using final_project_ethanbrown3.Models;
 using final_project_ethanbrown3.ViewModels;
+using final_project_ethanbrown3.Models.DomainServices;
 
 namespace final_project_ethanbrown3.Controllers
 {
@@ -33,6 +34,11 @@ namespace final_project_ethanbrown3.Controllers
             return View(homeViewModel);
         }
 
+        /// <summary>
+        /// Returns the ProductList View with the list of products for the seller id provided.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>ProductsList View</returns>
         public IActionResult ProductList(int id)
         {
             var products = _productRepository.GetProductsBySellerId(id).OrderBy(p => p.ProductName );
@@ -47,6 +53,20 @@ namespace final_project_ethanbrown3.Controllers
             };
             
             return View(productListViewModel);
+        }
+        
+        /// <summary>
+        /// Returns the Product Detail View for the product id provided.
+        /// </summary>
+        /// <param name="id">Product Id</param>
+        /// <returns>ProductDetail View</returns>
+        public IActionResult ProductDetail(int id)
+        {
+            var product = _productRepository.GetProductById(id);
+            if (product == null)
+                return NotFound();
+
+            return View(product);
         }
     }
 }

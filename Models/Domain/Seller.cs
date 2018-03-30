@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-namespace final_project_ethanbrown3.Models
+namespace final_project_ethanbrown3.Models.Domain
 {
     /// <summary>
     /// Seller Model Class: Represents sellers in the application
