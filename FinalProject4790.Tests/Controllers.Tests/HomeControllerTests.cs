@@ -10,7 +10,6 @@ namespace FinalProject4790.Tests.Controllers.Tests
     public class HomeControllerTests
     {
 
-        private MockProductRepository mockProducts;
         private MockSellerRepository mockSellers;
         private HomeController controller;
 
@@ -19,8 +18,7 @@ namespace FinalProject4790.Tests.Controllers.Tests
         {
             // Arrange
             mockSellers = new MockSellerRepository();
-            mockProducts = new MockProductRepository();
-            controller = new HomeController(mockSellers, mockProducts);
+            controller = new HomeController(mockSellers);
         }
 
         [Test]
@@ -30,26 +28,6 @@ namespace FinalProject4790.Tests.Controllers.Tests
             var result = controller.Index() as ViewResult;
             var model = result.Model;
             // Assert
-            Assert.IsInstanceOf<ViewResult>(result);
-            Assert.IsNotNull(model);
-        }
-
-        [Test]
-        public void HomeControllerProductListReturnsViewResult()
-        {
-            var result = controller.ProductList(0, "SellerNameTest") as ViewResult;
-            var model = result.Model;
-            
-            Assert.IsInstanceOf<ViewResult>(result);
-            Assert.IsNotNull(model);
-        }
-
-        [Test]
-        public void HomeControllerProductDetailReturnsViewResult()
-        {
-            var result = controller.ProductDetail(0) as ViewResult;
-            var model = result.Model;
-            
             Assert.IsInstanceOf<ViewResult>(result);
             Assert.IsNotNull(model);
         }
