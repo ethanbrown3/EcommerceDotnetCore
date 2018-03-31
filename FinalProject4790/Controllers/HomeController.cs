@@ -18,6 +18,7 @@ namespace FinalProject4790.Controllers
         {
             _sellerRepository = sellerRepository; 
         }
+        
         // GET: /<controller>/
         public IActionResult Index()
         {
