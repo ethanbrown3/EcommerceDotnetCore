@@ -5,7 +5,7 @@ using FinalProject4790.Models.DomainServices;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
-namespace Tests
+namespace FinalProject4790.Tests.Controllers.Tests
 {
     public class HomeControllerTests
     {
