@@ -14,6 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="2.0.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
     <ProjectReference Include="..\FinalProject4790\FinalProject4790.csproj" />
   </ItemGroup>
 

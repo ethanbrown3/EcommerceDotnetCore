@@ -54,5 +54,16 @@ namespace FinalProject4790.Controllers
 
             return View(product);
         }
+
+        /// <summary>
+        /// Adds product to order and navigates to order summary screen.
+        /// </summary>
+        /// <param name="id">Product Id</param>
+        /// <returns>ProductDetail View</returns>
+        public IActionResult OrderSummary()
+        {
+
+            return View();
+        }
     }
 }

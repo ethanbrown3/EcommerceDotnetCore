@@ -22,7 +22,7 @@ namespace FinalProject4790.Tests.Controllers.Tests
         }
 
         [Test]
-        public void ProductControllerProductListReturnsViewResult()
+        public void ProductController_ProductListReturnsViewResult()
         {
             var result = controller.ProductList(0, "SellerNameTest") as ViewResult;
             var model = result.Model;
@@ -32,13 +32,21 @@ namespace FinalProject4790.Tests.Controllers.Tests
         }
 
         [Test]
-        public void ProductControllerProductDetailReturnsViewResult()
+        public void ProductController_ProductDetailReturnsViewResult()
         {
             var result = controller.ProductDetail(0) as ViewResult;
             var model = result.Model;
             
             Assert.IsInstanceOf<ViewResult>(result);
             Assert.IsNotNull(model);
+        }
+
+        [Test]
+        public void ProductController_OrderSummaryReturnsViewResult()
+        {
+            var result = controller.OrderSummary() as ViewResult;
+            
+            Assert.IsInstanceOf<ViewResult>(result);
         }
     }
 }
