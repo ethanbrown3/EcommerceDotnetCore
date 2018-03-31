@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using FinalProject4790.Models;
 using FinalProject4790.ViewModels;
 using FinalProject4790.Models.DomainServices;
+using FinalProject4790.Models.Domain;
 
 namespace FinalProject4790.Controllers
 {
@@ -31,7 +32,7 @@ namespace FinalProject4790.Controllers
             if (products == null)
                 return NotFound();
 
-            var productListViewModel = new ProductViewModel()
+            var productListViewModel = new ProductListViewModel()
             {
                 Title = sellerName,
                 Products = products.ToList()
@@ -47,7 +48,7 @@ namespace FinalProject4790.Controllers
         /// <returns>ProductDetail View</returns>
         public IActionResult ProductDetail(int id)
         {
-            var product = _productRepository.GetProductById(id);
+            Product product = _productRepository.GetProductById(id);
             if (product == null)
                 return NotFound();
 
