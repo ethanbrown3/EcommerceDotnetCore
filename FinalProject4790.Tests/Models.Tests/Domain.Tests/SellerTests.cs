@@ -18,7 +18,7 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
         }
 
         [Test]
-        public void SellerGetSetId()
+        public void SellerSetGetId()
         {
             var seller = new Seller();
             seller.Id = 0;
@@ -27,7 +27,7 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
         }
 
         [Test]
-        public void SellerGetSetSellerName()
+        public void SellerSetGetSellerName()
         {
             var seller = new Seller();
             seller.SellerName = "TestName";
@@ -36,7 +36,7 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
         }
 
         [Test]
-        public void SellerGetSetSellerDecription()
+        public void SellerSetGetSellerDecription()
         {
             var seller = new Seller();
             seller.SellerDescription = "TestName";
@@ -45,7 +45,7 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
         }
 
         [Test]
-        public void SellerGetSetProducts()
+        public void SellerSetGetProducts()
         {
             var seller = new Seller();
             var product = new Product();
