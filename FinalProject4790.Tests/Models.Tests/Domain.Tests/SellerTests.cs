@@ -21,9 +21,9 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
         public void SellerSetGetId()
         {
             var seller = new Seller();
-            seller.Id = 0;
+            seller.Id = 100;
 
-            Assert.AreEqual(seller.Id, 0);
+            Assert.AreEqual(seller.Id, 100);
         }
 
         [Test]

@@ -21,9 +21,9 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
         public void ProductSetGetId()
         {
             var product = new Product();
-            product.Id = 0;
+            product.Id = 100;
 
-            Assert.AreEqual(product.Id, 0);
+            Assert.AreEqual(product.Id, 100);
         }
 
         [Test]
