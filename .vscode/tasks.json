@@ -10,6 +10,15 @@
                 "${workspaceFolder}/FinalProject4790/FinalProject4790.csproj"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "run tests",
+            "type": "shell",
+            "command": "dotnet test /Users/ethanbrown/Projects/cs4790/4790FinalProject/FinalProject4790.Tests/FinalProject4790.Tests.csproj",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
         }
     ]
 }
