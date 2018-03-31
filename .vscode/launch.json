@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/final-project-ethanbrown3/bin/Debug/netcoreapp2.0/final-project-ethanbrown3.dll",
+            "program": "${workspaceFolder}/FinalProject4790/bin/Debug/netcoreapp2.0/FinalProject4790.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/final-project-ethanbrown3",
+            "cwd": "${workspaceFolder}/FinalProject4790",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart",
             "launchBrowser": {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-namespace final_project_ethanbrown3.Models.Domain
+namespace FinalProject4790.Models.Domain
 {
     /// <summary>
     /// Order Model class: represents orders placed by customers

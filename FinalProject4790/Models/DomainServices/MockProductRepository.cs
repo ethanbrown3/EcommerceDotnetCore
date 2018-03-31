@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using final_project_ethanbrown3.Models.Domain;
+using FinalProject4790.Models.Domain;
 
-namespace final_project_ethanbrown3.Models.DomainServices
+namespace FinalProject4790.Models.DomainServices
 {
     /// <summary>
     /// Mock Seller Data Repository

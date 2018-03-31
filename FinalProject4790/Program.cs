@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace final_project_ethanbrown3
+namespace FinalProject4790
 {
     public class Program
     {

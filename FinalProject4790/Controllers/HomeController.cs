@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using final_project_ethanbrown3.Models;
-using final_project_ethanbrown3.ViewModels;
-using final_project_ethanbrown3.Models.DomainServices;
+using FinalProject4790.Models;
+using FinalProject4790.ViewModels;
+using FinalProject4790.Models.DomainServices;
 
-namespace final_project_ethanbrown3.Controllers
+namespace FinalProject4790.Controllers
 {
     public class HomeController : Controller
     {
