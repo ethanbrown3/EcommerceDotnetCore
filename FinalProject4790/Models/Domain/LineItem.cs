@@ -12,7 +12,9 @@ namespace FinalProject4790.Models.Domain
     public class LineItem
     {
         public int Id { get; set; }
-        public int ProductInventoryId { get; set; }
         public int LineItemQuantity { get; set; }
+        
+        public int ProductId { get; set; }
+        public Product LineItemProduct { get; set; }
     }
 }
