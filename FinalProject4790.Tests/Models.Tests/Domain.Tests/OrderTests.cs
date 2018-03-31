@@ -22,9 +22,9 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
         [Test]
         public void OrderSetGetId()
         {
-            order.Id = 0;
+            order.Id = 100;
 
-            Assert.AreEqual(order.Id, 0);
+            Assert.AreEqual(order.Id, 100);
         }
 
         [Test]
@@ -45,21 +45,21 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
         public void OrderSetGetSeller()
         {
             var seller = new Seller();
-            seller.Id = 0;
+            seller.Id = 100;
 
             order.SellerId = seller.Id;
             order.OrderSeller = seller;
 
-            Assert.AreEqual(order.SellerId, 0);
+            Assert.AreEqual(order.SellerId, 100);
             Assert.AreEqual(order.OrderSeller, seller);
         }
 
         [Test]
         public void OrderSetGetUserId()
         {
-            order.UserId = 0;
+            order.UserId = 100;
 
-            Assert.AreEqual(order.SellerId, 0);
+            Assert.AreEqual(order.SellerId, 100);
         }
 
     }
