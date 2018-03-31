@@ -10,17 +10,17 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
 {
     public class SellerTests
     { 
+        private Seller seller;
         [SetUp]
         public void Setup()
         {
             // Arrange
-            
+            seller = new Seller();
         }
 
         [Test]
         public void SellerSetGetId()
         {
-            var seller = new Seller();
             seller.Id = 100;
 
             Assert.AreEqual(seller.Id, 100);
@@ -29,7 +29,6 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
         [Test]
         public void SellerSetGetSellerName()
         {
-            var seller = new Seller();
             seller.SellerName = "TestName";
 
             Assert.AreEqual(seller.SellerName, "TestName");
@@ -38,7 +37,6 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
         [Test]
         public void SellerSetGetSellerDecription()
         {
-            var seller = new Seller();
             seller.SellerDescription = "TestName";
 
             Assert.AreEqual(seller.SellerDescription, "TestName");
@@ -47,7 +45,6 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
         [Test]
         public void SellerSetGetProducts()
         {
-            var seller = new Seller();
             var product = new Product();
             var products = new List<Product>();
             
