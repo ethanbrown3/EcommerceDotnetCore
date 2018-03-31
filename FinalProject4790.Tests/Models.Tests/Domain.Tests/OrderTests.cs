@@ -59,7 +59,7 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
         {
             order.UserId = 100;
 
-            Assert.AreEqual(order.SellerId, 100);
+            Assert.AreEqual(order.UserId, 100);
         }
 
     }
