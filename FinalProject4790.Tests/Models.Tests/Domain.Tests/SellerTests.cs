@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace FinalProject4790.Tests.Models.Domain.Tests
 {
     public class SellerTests
-    {
+    { 
         [SetUp]
         public void Setup()
         {
