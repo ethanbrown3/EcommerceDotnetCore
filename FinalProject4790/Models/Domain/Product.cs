@@ -12,7 +12,8 @@ namespace FinalProject4790.Models.Domain
     {
         public int Id { get; set; }
         public string ProductName { get; set; }
-        public string ProductDescription { get; set; }
+        public string ProductShortDescription { get; set; }
+        public string ProductLongDescription { get; set; }
         public decimal ProductPrice { get; set; }
         public string ProductImgUrl { get; set; }
         public bool IsEdible { get; set; } 

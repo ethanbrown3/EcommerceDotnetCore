@@ -18,7 +18,7 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
         }
 
         [Test]
-        public void ProductSetGetId()
+        public void Product_SetGetId()
         {
             var product = new Product();
             product.Id = 100;
@@ -27,7 +27,7 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
         }
 
         [Test]
-        public void ProductSetGetProductName()
+        public void Product_SetGetProductName()
         {
             var product = new Product();
             product.ProductName = "TestName";
@@ -36,16 +36,25 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
         }
 
         [Test]
-        public void ProductSetGetProductDecription()
+        public void Product_SetGetProductShortDecription()
         {
             var product = new Product();
-            product.ProductDescription = "TestName";
+            product.ProductShortDescription = "TestName";
 
-            Assert.AreEqual(product.ProductDescription, "TestName");
+            Assert.AreEqual(product.ProductShortDescription, "TestName");
         }
 
         [Test]
-        public void ProductSetGetProductPrice()
+        public void Product_SetGetProductLongDecription()
+        {
+            var product = new Product();
+            product.ProductLongDescription = "TestName";
+
+            Assert.AreEqual(product.ProductLongDescription, "TestName");
+        }
+
+        [Test]
+        public void Product_SetGetProductPrice()
         {
             var product = new Product();
             product.ProductPrice = 1.99M;
@@ -54,7 +63,7 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
         }
 
         [Test]
-        public void ProductSetGetProductImgUrl()
+        public void Product_SetGetProductImgUrl()
         {
             var product = new Product();
             product.ProductImgUrl = "http://placehold.it/120x120&text=image1";
@@ -63,7 +72,7 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
         }
 
         [Test]
-        public void ProductSetGetIsEdible()
+        public void Product_SetGetIsEdible()
         {
             var product = new Product();
             product.IsEdible = true;
@@ -72,7 +81,7 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
         }
 
         [Test]
-        public void ProductSetGetProductCount()
+        public void Product_SetGetProductCount()
         {
             var product = new Product();
             product.ProductCount = 1;
@@ -81,7 +90,7 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
         }
 
         [Test]
-        public void ProductSetGetSellerId()
+        public void Product_SetGetSellerId()
         {
             var product = new Product();
             product.SellerId = 1;
@@ -90,7 +99,7 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
         }
 
         [Test]
-        public void ProductSetGetSeller()
+        public void Product_SetGetSeller()
         {
             var product = new Product();
             var seller = new Seller();

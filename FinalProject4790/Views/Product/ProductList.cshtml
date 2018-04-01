@@ -8,11 +8,13 @@
         <div class="thumbnail">
             <div class="caption">
                 <img src="@product.ProductImgUrl" alt="@product.ProductName" height="100%" width="100%">
+                <h4 class="pull-right">@product.ProductPrice.ToString("#,##0.00")</h4>
                 <h4>
-                    <a asp-controller="Product" asp-action="ProductDetail"
-                        asp-route-id="@product.Id">@product.ProductName</a>
+                    <a asp-controller="Product" asp-action="ProductDetail" asp-route-id="@product.Id">
+                        @product.ProductName
+                    </a>
                 </h4>
-                <p>@product.ProductDescription</p>
+                <p>@product.ProductShortDescription</p>
             </div>
         </div>
     </div>
