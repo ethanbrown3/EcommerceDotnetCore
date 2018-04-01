@@ -12,6 +12,8 @@ namespace FinalProject4790.Models.DomainServices
     public interface IOrderRepository
     {
         IEnumerable<Order> GetAllOrders();
+        IEnumerable<Order> GetAllSellersOrders(int sellerId);
+        IEnumerable<Order> GetAllUserOrders(int userId);
         Order GetOrderById(int orderId);
     }
 }

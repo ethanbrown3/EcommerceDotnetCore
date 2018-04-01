@@ -12,15 +12,11 @@ namespace FinalProject4790.Models.Domain
     public class Order
     {
         public int Id { get; set; }
-        
         public DateTime OrderDate { get; set; }
-        public int LineItemId { get; set; }
         public string CreditTransactionId { get; set; }
-        
         public int UserId { get; set; }
-        
         public int SellerId { get; set; }
         public Seller OrderSeller { get; set; }
-
+        public List<LineItem> OrderLineItems { get; set; }
     }
 }
