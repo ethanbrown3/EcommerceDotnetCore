@@ -11,7 +11,7 @@ namespace FinalProject4790.Models.Domain
     /// </summary>
     public class Seller
     {
-        public int Id { get; set; }
+        public int SellerId { get; set; }
         public string SellerName { get; set; }
         public string SellerDescription { get; set; }
         

@@ -11,7 +11,7 @@ namespace FinalProject4790.Models.Domain
     /// </summary>
     public class Order
     {
-        public int Id { get; set; }
+        public int OrderId { get; set; }
         public DateTime OrderDate { get; set; }
         public string CreditTransactionId { get; set; }
         public int UserId { get; set; }

@@ -21,19 +21,19 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
         [Test]
         public void LineItemSetGetId()
         {
-            lineItem.Id = 100;
+            lineItem.LineItemId = 100;
 
-            Assert.AreEqual(lineItem.Id, 100);
+            Assert.AreEqual(lineItem.LineItemId, 100);
         }
 
         [Test]
         public void LineItemSetGetProductId()
         {
             var product = new Product();
-            product.Id = 100;
+            product.ProductId = 100;
 
             lineItem.LineItemProduct = product;
-            lineItem.ProductId = product.Id;
+            lineItem.ProductId = product.ProductId;
 
             Assert.AreEqual(lineItem.ProductId, 100);
             Assert.AreEqual(lineItem.LineItemProduct, product);

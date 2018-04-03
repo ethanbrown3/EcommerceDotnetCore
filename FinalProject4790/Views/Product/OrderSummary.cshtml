@@ -1,0 +1,19 @@
+@model Order
+
+<h2>Order Summary</h2>
+
+@foreach(var lineItem in Model.OrderLineItems)
+{
+    <div class="col-sm-4 col-lg-4 col-md-4">
+        <div class="thumbnail">
+            <div class="caption">
+                <img src="@product.ProductImgUrl" alt="@product.ProductName" height="100%" width="100%">
+                <h4>
+                    <a asp-controller="Product" asp-action="ProductDetail"
+                        asp-route-id="@product.Id">@product.ProductName</a>
+                </h4>
+                <p>@product.ProductDescription</p>
+            </div>
+        </div>
+    </div>
+}

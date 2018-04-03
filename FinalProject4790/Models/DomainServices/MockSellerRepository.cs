@@ -25,10 +25,10 @@ namespace FinalProject4790.Models.DomainServices
         {
 	        _Sellers = new List<Seller>
                 {
-                    new Seller {Id = 0, SellerName = "Paintball Planet", SellerDescription = "Paintball Retailer"},
-                    new Seller {Id = 1, SellerName = "Wayne Enterprises", SellerDescription = "Splunking Gear"},
-                    new Seller {Id = 2, SellerName = "Stark Industries", SellerDescription = "Science Supply"},
-                    new Seller {Id = 3, SellerName = "Ace Chemicals", SellerDescription = "Cleaning Products"},
+                    new Seller {SellerId = 0, SellerName = "Paintball Planet", SellerDescription = "Paintball Retailer"},
+                    new Seller {SellerId = 1, SellerName = "Wayne Enterprises", SellerDescription = "Splunking Gear"},
+                    new Seller {SellerId = 2, SellerName = "Stark Industries", SellerDescription = "Science Supply"},
+                    new Seller {SellerId = 3, SellerName = "Ace Chemicals", SellerDescription = "Cleaning Products"},
                 };
         }
         
@@ -39,7 +39,7 @@ namespace FinalProject4790.Models.DomainServices
 
         public Seller GetSellerById(int sellerId)
         {
-            return _Sellers.FirstOrDefault(s => s.Id == sellerId);
+            return _Sellers.FirstOrDefault(s => s.SellerId == sellerId);
         }
     }
 }

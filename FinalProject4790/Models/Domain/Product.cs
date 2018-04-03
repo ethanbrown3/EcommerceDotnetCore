@@ -10,7 +10,7 @@ namespace FinalProject4790.Models.Domain
     /// </summary>
     public class Product
     {
-        public int Id { get; set; }
+        public int ProductId { get; set; }
         public string ProductName { get; set; }
         public string ProductShortDescription { get; set; }
         public string ProductLongDescription { get; set; }

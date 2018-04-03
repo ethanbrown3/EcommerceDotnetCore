@@ -25,7 +25,7 @@ namespace FinalProject4790.Models.DomainServices
         {
 	        _Products = new List<Product>
                 {
-                    new Product {Id = 0,
+                    new Product {ProductId = 0,
                         SellerId=0,
                         ProductName = "Paintballs",
                         ProductShortDescription = "Green and Yellow Shell / Yellow Fill.",
@@ -35,7 +35,7 @@ namespace FinalProject4790.Models.DomainServices
                         ProductCount=10,
                         IsEdible=false
                     },
-                    new Product {Id = 1,
+                    new Product {ProductId = 1,
                         SellerId=1,
                         ProductName = "Tumbler",
                         ProductShortDescription = "Off road vehicle. Comes in black.",
@@ -45,7 +45,7 @@ namespace FinalProject4790.Models.DomainServices
                         ProductCount=3,
                         IsEdible=false
                     },
-                    new Product {Id = 2,
+                    new Product {ProductId = 2,
                     SellerId=2,
                         ProductName = "Arc Reactor",
                         ProductShortDescription = "Powers a heart for over 50 lifetimes.",
@@ -55,7 +55,7 @@ namespace FinalProject4790.Models.DomainServices
                         ProductCount=1,
                         IsEdible=false
                     },
-                    new Product {Id = 3,
+                    new Product {ProductId = 3,
                         SellerId=3,
                         ProductName = "Skin Bleach",
                         ProductShortDescription = "Adverse side affects.",
@@ -81,7 +81,7 @@ namespace FinalProject4790.Models.DomainServices
 
         public Product GetProductById(int productId)
         {
-            return _Products.FirstOrDefault(p => p.Id == productId);
+            return _Products.FirstOrDefault(p => p.ProductId == productId);
         }
     }
 }
