@@ -13,7 +13,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-controller="Home" asp-action="Index" class="navbar-brand">CS4790 - Ethan Brown</a></li>
-                    
+                    @await Component.InvokeAsync("ShoppingCartSummary")
+
                 </ul>
             </div>
         </div>
