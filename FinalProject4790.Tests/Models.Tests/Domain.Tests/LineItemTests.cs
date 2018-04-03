@@ -33,9 +33,9 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
             product.ProductId = 100;
 
             lineItem.LineItemProduct = product;
-            lineItem.ProductId = product.ProductId;
+            lineItem.LineItemProductId = product.ProductId;
 
-            Assert.AreEqual(lineItem.ProductId, 100);
+            Assert.AreEqual(lineItem.LineItemProductId, 100);
             Assert.AreEqual(lineItem.LineItemProduct, product);
         }
 

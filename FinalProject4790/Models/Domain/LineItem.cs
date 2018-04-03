@@ -14,9 +14,9 @@ namespace FinalProject4790.Models.Domain
         public int LineItemId { get; set; }
         public int LineItemQuantity { get; set; }
         
-        public int ProductId { get; set; }
+        public int LineItemProductId { get; set; }
         public Product LineItemProduct { get; set; }
 
-        public int OrderId { get; set; }
+        public string ShoppingCartId { get; set; }
     }
 }
