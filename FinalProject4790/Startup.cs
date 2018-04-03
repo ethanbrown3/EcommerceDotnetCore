@@ -28,8 +28,8 @@ namespace FinalProject4790
             services.AddDbContext<AppDbContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddTransient<ISellerRepository, MockSellerRepository>();
-            services.AddTransient<IProductRepository, MockProductRepository>();
+            services.AddTransient<ISellerRepository, SellerRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
 
             services.AddMvc();
         }

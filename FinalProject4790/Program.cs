@@ -7,6 +7,8 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection;
+using FinalProject4790.Models;
 
 namespace FinalProject4790
 {
@@ -14,7 +16,26 @@ namespace FinalProject4790
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            var host = BuildWebHost(args);
+
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                try
+                {
+                    var context = services.GetRequiredService<AppDbContext>();
+                    DbInitializer.Seed(context);
+                }
+                catch (Exception)
+                {
+                    
+                }
+            }
+
+            host.Run();
+
+            //BuildWebHost(args).Run();
+
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
