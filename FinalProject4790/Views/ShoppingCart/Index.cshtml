@@ -14,7 +14,7 @@
     <tbody>
         @foreach (var lineItem in Model.ShoppingCart.ShoppingCartLineItems)
         {
-            <tr>r
+            <tr>
                 <td class="text-center">@lineItem.LineItemQuantity</td>
                 <td class="text-left">@lineItem.Product.ProductName</td>
                 <td class="text-right">@lineItem.Product.ProductPrice.ToString("c")</td>
