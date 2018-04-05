@@ -34,5 +34,27 @@ namespace FinalProject4790.Controllers
 
             return View(shoppingCartViewModel);
         }
+
+                public RedirectToActionResult AddToShoppingCart(int productId)
+        {
+            var productToAdd = _productRepository.GetProductById(productId);
+
+            if (productToAdd != null)
+            {
+                _shoppingCart.AddToCart(productToAdd, 1);
+            }
+            return RedirectToAction("Index");
+        }
+
+        public RedirectToActionResult RemoveFromShoppingCart(int productId)
+        {
+            var productToRemove = _productRepository.GetProductById(productId);
+
+            if (productToRemove != null)
+            {
+                _shoppingCart.RemoveFromCart(productToRemove);
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
