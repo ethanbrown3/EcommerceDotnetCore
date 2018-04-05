@@ -5,10 +5,20 @@
 <div class="thumbnail">
     <img alt="@Model.ProductName" src="@Model.ProductImgUrl">
     <div class="caption-full">
-        <h3 class="pull-right">@Model.ProductPrice.ToString("#,##0.00")</h3>
         <h3>@Model.ProductName</h3>
+        
+        <a  class="btn btn-primary" 
+            asp-controller="ShoppingCart" 
+            asp-action="AddToShoppingCart" 
+            asp-route-productId="@Model.ProductId"
+        >Add To Order</a>
+        
+        <div class="pull-right">
+            <h3>$@Model.ProductPrice.ToString("#,##0.00")</h3>
+        </div>
+        
         <h4>@Model.ProductShortDescription</h4>
-        <h4><a href="#">Add To Order</a></h4>
-        <p>@Model.ProductLongDescription</p>
+
+        <p class>@Model.ProductLongDescription</p>
     </div>
 </div>
