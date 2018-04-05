@@ -28,7 +28,7 @@ namespace FinalProject4790
                 }
                 catch (Exception)
                 {
-                    
+                    // TODO: add exception handling
                 }
             }
 
@@ -40,7 +40,7 @@ namespace FinalProject4790
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseUrls("http://*:5000")
+                // .UseUrls("http://*:5000")
                 .UseStartup<Startup>()
                 .Build();
     }
