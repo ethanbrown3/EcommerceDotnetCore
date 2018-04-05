@@ -52,12 +52,19 @@ namespace FinalProject4790
             {
                 routes.MapRoute(
                     name:"default",
-                    template: "{controller=Home}/{action=Index}/{Id?}"
+                    template: "{controller=Home}/{action=Index}"
                 );
+
                 routes.MapRoute(
                     "ProductList",                                              // Route name
                     "{controller}/{action}/{Id}/{artistName}",                           // URL with parameters
-                    new { controller = "Home", action = "ProductList", Id = "", artistName = "" }  // Parameter defaults
+                    new { controller = "Product", action = "ProductList", Id = "", artistName = "" }  // Parameter defaults
+                );
+                
+                routes.MapRoute(
+                    "ShoppingCart",                                              // Route name
+                    "{controller}/{action}",                           // URL with parameters
+                    new { controller = "SoppingCart", action = "Index" }  // Parameter defaults
                 );
             });
         }
