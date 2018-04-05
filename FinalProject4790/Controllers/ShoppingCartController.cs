@@ -35,7 +35,7 @@ namespace FinalProject4790.Controllers
             return View(shoppingCartViewModel);
         }
 
-                public RedirectToActionResult AddToShoppingCart(int productId)
+        public RedirectToActionResult AddToShoppingCart(int productId)
         {
             var productToAdd = _productRepository.GetProductById(productId);
 
