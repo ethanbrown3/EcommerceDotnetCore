@@ -15,12 +15,21 @@ namespace FinalProject4790.Controllers
         private readonly IProductRepository _productRepository;
         private readonly ShoppingCart _shoppingCart;
 
+        /// <summary>
+        /// Controller that handles requests related to the shopping cart
+        /// </summary>
+        /// <param name="productRepository"></param>
+        /// <param name="shoppingCart"></param>
         public ShoppingCartController(IProductRepository productRepository, ShoppingCart shoppingCart)
         {
             _productRepository = productRepository;
             _shoppingCart = shoppingCart;
         }
         
+        /// <summary>
+        /// Navigates to the shopping cart summary page
+        /// </summary>
+        /// <returns>Shopping Cart Summary View</returns>
         public ViewResult Index()
         {
             var items = _shoppingCart.GetShoppingCartLineItems();
@@ -35,6 +44,11 @@ namespace FinalProject4790.Controllers
             return View(shoppingCartViewModel);
         }
 
+        /// <summary>
+        /// After adding an item to a shopping cart, redirect to the shopping cart summary
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns>Redirect to Cart Summary</returns>
         public RedirectToActionResult AddToShoppingCart(int productId)
         {
             var productToAdd = _productRepository.GetProductById(productId);
@@ -46,6 +60,11 @@ namespace FinalProject4790.Controllers
             return RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// Handles requests to remove items from the cart
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns>Redirect to Cart Summary</returns>
         public RedirectToActionResult RemoveFromShoppingCart(int productId)
         {
             var productToRemove = _productRepository.GetProductById(productId);
