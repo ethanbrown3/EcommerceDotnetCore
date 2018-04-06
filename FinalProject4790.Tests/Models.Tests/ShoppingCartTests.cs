@@ -26,6 +26,8 @@ namespace FinalProject4790.Tests.Models.Tests
                 .Options;
             appDbContext = new AppDbContext(options);
 
+            appDbContext.Database.EnsureCreated();
+            
             DbInitializer.Seed(appDbContext);
 
             _shoppingCart = new ShoppingCart(appDbContext);
@@ -105,6 +107,13 @@ namespace FinalProject4790.Tests.Models.Tests
 
             // Assert
             Assert.AreEqual(productToAdd.ProductPrice, _shoppingCart.GetShoppingCartTotal());
+        }
+
+        [TearDown]
+        public void Dispose()
+        {
+            appDbContext.Database.EnsureDeleted();
+            appDbContext.Dispose();
         }
     }
 }

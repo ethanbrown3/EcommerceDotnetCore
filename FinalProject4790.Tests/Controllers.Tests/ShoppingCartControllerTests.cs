@@ -26,6 +26,7 @@ namespace FinalProject4790.Tests.Controllers.Tests
                 .Options;
             appDbContext = new AppDbContext(options);
 
+            appDbContext.Database.EnsureCreated();
             DbInitializer.Seed(appDbContext);
 
             _shoppingCart = new ShoppingCart(appDbContext);
@@ -67,6 +68,13 @@ namespace FinalProject4790.Tests.Controllers.Tests
 
             // Assert
             Assert.IsInstanceOf<RedirectToActionResult>(result);
+        }
+
+        [TearDown]
+        public void Dispose()
+        {
+            appDbContext.Database.EnsureDeleted();
+            appDbContext.Dispose();
         }
 
     }
