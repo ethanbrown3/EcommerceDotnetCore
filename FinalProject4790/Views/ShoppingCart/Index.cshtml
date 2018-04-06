@@ -16,9 +16,9 @@
             <tr>
                 <td class="text-center">@lineItem.LineItemQuantity</td>
                 <td class="text-left">@lineItem.LineItemProduct.ProductName</td>
-                <td class="text-right">@lineItem.LineItemProduct.ProductPrice.ToString("c")</td>
+                <td class="text-right">&#36;@lineItem.LineItemProduct.ProductPrice.ToString("G29")</td>
                 <td class="text-right">
-                    @((lineItem.LineItemQuantity * lineItem.LineItemProduct.ProductPrice).ToString("c"))
+                    &#36;@((lineItem.LineItemQuantity * lineItem.LineItemProduct.ProductPrice).ToString("G29"))
                 </td>
             </tr>
         }
@@ -27,7 +27,7 @@
         <tr>
             <td colspan="3" class="text-right">Total:</td>
             <td class="text-right">
-                @Model.ShoppingCartTotal.ToString("c")
+                &#36;@Model.ShoppingCartTotal.ToString("G29")
             </td>
         </tr>
     </tfoot>
