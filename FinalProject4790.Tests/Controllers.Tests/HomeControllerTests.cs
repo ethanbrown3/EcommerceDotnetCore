@@ -22,7 +22,7 @@ namespace FinalProject4790.Tests.Controllers.Tests
         }
 
         [Test]
-        public void HomeControllerIndexReturnsViewResult()
+        public void HomeController_IndexReturnsViewResult()
         {
             // Act
             var result = controller.Index() as ViewResult;
