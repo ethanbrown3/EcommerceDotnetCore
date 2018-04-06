@@ -11,7 +11,7 @@ namespace FinalProject4790.Models.DomainServices
     public class ShoppingCart
     {
         private readonly AppDbContext _appDbContext;
-        private ShoppingCart(AppDbContext appDbContext)
+        public ShoppingCart(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
         }
@@ -20,6 +20,11 @@ namespace FinalProject4790.Models.DomainServices
 
         public List<LineItem> ShoppingCartLineItems { get; set; }
 
+        /// <summary>
+        /// Returns a shopping cart based on the Session
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns>New ShoppingCart</returns>
         public static ShoppingCart GetCart(IServiceProvider services)
         {
             ISession session = services.GetRequiredService<IHttpContextAccessor>()?
@@ -33,6 +38,11 @@ namespace FinalProject4790.Models.DomainServices
             return new ShoppingCart(context) { ShoppingCartId = cartId };
         }
 
+        /// <summary>
+        /// Adds product and the ammount of the product to the cart
+        /// </summary>
+        /// <param name="product"></param>
+        /// <param name="amount"></param>
         public void AddToCart(Product product, int amount)
         {
             var shoppingCartLineItem =
@@ -57,6 +67,11 @@ namespace FinalProject4790.Models.DomainServices
             _appDbContext.SaveChanges();
         }
 
+        /// <summary>
+        /// Removes 1 of the given product from cart
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns>Amount of item left in cart</returns>
         public int RemoveFromCart(Product product)
         {
             var shoppingCartLineItem =
@@ -83,6 +98,10 @@ namespace FinalProject4790.Models.DomainServices
             return localAmount;
         }
 
+        /// <summary>
+        /// Returns a list of all the shopping cart's LineItems
+        /// </summary>
+        /// <returns>List of LineItems</returns>
         public List<LineItem> GetShoppingCartLineItems()
         {
             return ShoppingCartLineItems ??
@@ -92,6 +111,9 @@ namespace FinalProject4790.Models.DomainServices
                            .ToList());
         }
 
+        /// <summary>
+        /// Clears all products out of the cart
+        /// </summary>
         public void ClearCart()
         {
             var cartItems = _appDbContext
@@ -104,7 +126,10 @@ namespace FinalProject4790.Models.DomainServices
         }
 
 
-
+        /// <summary>
+        /// Returns the total for the shopping cart. Total comes from suming all the products price's * amount.
+        /// </summary>
+        /// <returns>decimal total</returns>
         public decimal GetShoppingCartTotal()
         {
             var total = _appDbContext.LineItems.Where(c => c.ShoppingCartId == ShoppingCartId)
