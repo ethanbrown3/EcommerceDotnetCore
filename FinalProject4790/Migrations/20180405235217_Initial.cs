@@ -55,25 +55,25 @@ namespace FinalProject4790.Migrations
                 {
                     LineItemId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    LineItemProductId = table.Column<int>(nullable: false),
                     LineItemQuantity = table.Column<int>(nullable: false),
-                    ProductId = table.Column<int>(nullable: false),
                     ShoppingCartId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_LineItems", x => x.LineItemId);
                     table.ForeignKey(
-                        name: "FK_LineItems_Products_ProductId",
-                        column: x => x.ProductId,
+                        name: "FK_LineItems_Products_LineItemProductId",
+                        column: x => x.LineItemProductId,
                         principalTable: "Products",
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_LineItems_ProductId",
+                name: "IX_LineItems_LineItemProductId",
                 table: "LineItems",
-                column: "ProductId");
+                column: "LineItemProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_SellerId",
