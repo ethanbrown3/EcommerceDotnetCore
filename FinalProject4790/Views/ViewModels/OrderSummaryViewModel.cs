@@ -9,6 +9,6 @@ namespace FinalProject4790.ViewModels
 {
     public class OrderSummaryViewModel
     {
-       public List<LineItem> OrderLineItems { get; set; }
+       public List<CartLineItem> OrderLineItems { get; set; }
     }
 }

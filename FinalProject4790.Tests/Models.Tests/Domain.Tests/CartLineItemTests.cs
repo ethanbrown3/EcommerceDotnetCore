@@ -10,20 +10,20 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
 {
     public class LineItemTests
     {
-        private LineItem lineItem;
+        private CartLineItem lineItem;
         [SetUp]
         public void Setup()
         {
             // Arrange
-            lineItem = new LineItem();
+            lineItem = new CartLineItem();
         }
 
         [Test]
         public void LineItemSetGetId()
         {
-            lineItem.LineItemId = 100;
+            lineItem.CartLineItemId = 100;
 
-            Assert.AreEqual(lineItem.LineItemId, 100);
+            Assert.AreEqual(lineItem.CartLineItemId, 100);
         }
 
         [Test]
@@ -32,11 +32,11 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
             var product = new Product();
             product.ProductId = 100;
 
-            lineItem.LineItemProduct = product;
-            lineItem.LineItemProductId = product.ProductId;
+            lineItem.CartLineItemProduct = product;
+            lineItem.CartLineItemProductId = product.ProductId;
 
-            Assert.AreEqual(lineItem.LineItemProductId, 100);
-            Assert.AreEqual(lineItem.LineItemProduct, product);
+            Assert.AreEqual(lineItem.CartLineItemProductId, 100);
+            Assert.AreEqual(lineItem.CartLineItemProduct, product);
         }
 
     }

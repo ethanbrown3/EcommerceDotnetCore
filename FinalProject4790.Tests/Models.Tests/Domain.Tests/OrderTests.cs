@@ -52,16 +52,16 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
         [Test]
         public void Order_SetGetLineItems()
         {
-            var lineItemsTest = new List<LineItem>();
+            var lineItemsTest = new List<CartLineItem>();
             lineItemsTest.Add(
-                new LineItem
+                new CartLineItem
                 {
-                    LineItemId = 100
+                    CartLineItemId = 100
                 }
             );
 
             order.OrderLineItems = lineItemsTest;
-            var result = order.OrderLineItems[0].LineItemId;
+            var result = order.OrderLineItems[0].CartLineItemId;
             Assert.AreEqual(result, 100);
         }
 

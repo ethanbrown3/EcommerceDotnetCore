@@ -18,7 +18,7 @@ namespace FinalProject4790.Models.DomainServices
 
         public string ShoppingCartId { get; set; }
 
-        public List<LineItem> ShoppingCartLineItems { get; set; }
+        public List<CartLineItem> ShoppingCartLineItems { get; set; }
 
         /// <summary>
         /// Returns a shopping cart based on the Session
@@ -47,22 +47,22 @@ namespace FinalProject4790.Models.DomainServices
         {
             var shoppingCartLineItem =
                     _appDbContext.LineItems.SingleOrDefault(
-                        s => s.LineItemProduct.ProductId == product.ProductId && s.ShoppingCartId == ShoppingCartId);
+                        s => s.CartLineItemProduct.ProductId == product.ProductId && s.CartShoppingCartId == ShoppingCartId);
 
             if (shoppingCartLineItem == null)
             {
-                shoppingCartLineItem = new LineItem
+                shoppingCartLineItem = new CartLineItem
                 {
-                    ShoppingCartId = ShoppingCartId,
-                    LineItemProduct = product,
-                    LineItemQuantity = amount
+                    CartShoppingCartId = ShoppingCartId,
+                    CartLineItemProduct = product,
+                    CartLineItemQuantity = amount
                 };
 
                 _appDbContext.LineItems.Add(shoppingCartLineItem);
             }
             else
             {
-                shoppingCartLineItem.LineItemQuantity += amount;
+                shoppingCartLineItem.CartLineItemQuantity += amount;
             }
             _appDbContext.SaveChanges();
         }
@@ -76,16 +76,16 @@ namespace FinalProject4790.Models.DomainServices
         {
             var shoppingCartLineItem =
                     _appDbContext.LineItems.SingleOrDefault(
-                        s => s.LineItemProduct.ProductId == product.ProductId && s.ShoppingCartId == ShoppingCartId);
+                        s => s.CartLineItemProduct.ProductId == product.ProductId && s.CartShoppingCartId == ShoppingCartId);
 
             var localAmount = 0;
 
             if (shoppingCartLineItem != null)
             {
-                if (shoppingCartLineItem.LineItemQuantity > 1)
+                if (shoppingCartLineItem.CartLineItemQuantity > 1)
                 {
-                    shoppingCartLineItem.LineItemQuantity--;
-                    localAmount = shoppingCartLineItem.LineItemQuantity;
+                    shoppingCartLineItem.CartLineItemQuantity--;
+                    localAmount = shoppingCartLineItem.CartLineItemQuantity;
                 }
                 else
                 {
@@ -102,12 +102,12 @@ namespace FinalProject4790.Models.DomainServices
         /// Returns a list of all the shopping cart's LineItems
         /// </summary>
         /// <returns>List of LineItems</returns>
-        public List<LineItem> GetShoppingCartLineItems()
+        public List<CartLineItem> GetShoppingCartLineItems()
         {
             return ShoppingCartLineItems ??
                    (ShoppingCartLineItems =
-                       _appDbContext.LineItems.Where(c => c.ShoppingCartId == ShoppingCartId)
-                           .Include(s => s.LineItemProduct)
+                       _appDbContext.LineItems.Where(c => c.CartShoppingCartId == ShoppingCartId)
+                           .Include(s => s.CartLineItemProduct)
                            .ToList());
         }
 
@@ -118,7 +118,7 @@ namespace FinalProject4790.Models.DomainServices
         {
             var cartItems = _appDbContext
                 .LineItems
-                .Where(cart => cart.ShoppingCartId == ShoppingCartId);
+                .Where(cart => cart.CartShoppingCartId == ShoppingCartId);
 
             _appDbContext.LineItems.RemoveRange(cartItems);
 
@@ -132,8 +132,8 @@ namespace FinalProject4790.Models.DomainServices
         /// <returns>decimal total</returns>
         public decimal GetShoppingCartTotal()
         {
-            var total = _appDbContext.LineItems.Where(c => c.ShoppingCartId == ShoppingCartId)
-                .Select(c => c.LineItemProduct.ProductPrice * c.LineItemQuantity).Sum();
+            var total = _appDbContext.LineItems.Where(c => c.CartShoppingCartId == ShoppingCartId)
+                .Select(c => c.CartLineItemProduct.ProductPrice * c.CartLineItemQuantity).Sum();
             return total;
         }
     }
