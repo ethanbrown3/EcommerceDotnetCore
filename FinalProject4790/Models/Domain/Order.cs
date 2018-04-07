@@ -15,7 +15,6 @@ namespace FinalProject4790.Models.Domain
         public DateTime OrderDate { get; set; }
         public string CreditTransactionId { get; set; }
         public int UserId { get; set; }
-        public Seller OrderSeller { get; set; }
         public List<LineItem> OrderLineItems { get; set; }
     }
 }

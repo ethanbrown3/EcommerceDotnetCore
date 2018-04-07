@@ -20,11 +20,11 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
         }
 
         [Test]
-        public void OrderSetGetId()
+        public void Order_SetGetOrderId()
         {
-            order.SellerId = 100;
+            order.OrderId = 100;
 
-            Assert.AreEqual(order.SellerId, 100);
+            Assert.AreEqual(order.OrderId, 100);
         }
 
         [Test]
@@ -42,24 +42,27 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
         }
 
         [Test]
-        public void OrderSetGetSeller()
-        {
-            var seller = new Seller();
-            seller.SellerId = 100;
-
-            order.SellerId = seller.SellerId;
-            order.OrderSeller = seller;
-
-            Assert.AreEqual(order.SellerId, 100);
-            Assert.AreEqual(order.OrderSeller, seller);
-        }
-
-        [Test]
-        public void OrderSetGetUserId()
+        public void Order_SetGetUserId()
         {
             order.UserId = 100;
 
             Assert.AreEqual(order.UserId, 100);
+        }
+
+        [Test]
+        public void Order_SetGetLineItems()
+        {
+            var lineItemsTest = new List<LineItem>();
+            lineItemsTest.Add(
+                new LineItem
+                {
+                    LineItemId = 100
+                }
+            );
+
+            order.OrderLineItems = lineItemsTest;
+            var result = order.OrderLineItems[0].LineItemId;
+            Assert.AreEqual(result, 100);
         }
 
     }
