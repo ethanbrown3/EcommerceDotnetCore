@@ -14,11 +14,11 @@
         @foreach (var lineItem in Model.ShoppingCart.ShoppingCartLineItems)
         {
             <tr>
-                <td class="text-center">@lineItem.LineItemQuantity</td>
-                <td class="text-left">@lineItem.LineItemProduct.ProductName</td>
-                <td class="text-right">&#36;@lineItem.LineItemProduct.ProductPrice.ToString("G29")</td>
+                <td class="text-center">@lineItem.CartLineItemQuantity</td>
+                <td class="text-left">@lineItem.CartLineItemProduct.ProductName</td>
+                <td class="text-right">&#36;@lineItem.CartLineItemProduct.ProductPrice.ToString("G29")</td>
                 <td class="text-right">
-                    &#36;@((lineItem.LineItemQuantity * lineItem.LineItemProduct.ProductPrice).ToString("G29"))
+                    &#36;@((lineItem.CartLineItemQuantity * lineItem.CartLineItemProduct.ProductPrice).ToString("G29"))
                 </td>
             </tr>
         }
