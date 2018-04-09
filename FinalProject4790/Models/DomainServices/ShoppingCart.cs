@@ -136,5 +136,20 @@ namespace FinalProject4790.Models.DomainServices
                 .Select(c => c.CartItemProduct.ProductPrice * c.CartItemQuantity).Sum();
             return total;
         }
+
+        /// <summary>
+        /// Returns a list of all the shopping cart's LineItems
+        /// </summary>
+        /// <returns>List of LineItems</returns>
+        public int GetTotalNumberOfItems()
+        {
+            int totalItems = 0;
+            var items = GetShoppingCartLineItems();
+            foreach(var item in items)
+            {
+                totalItems += item.CartItemQuantity;
+            }
+            return totalItems;
+        }
     }
 }
