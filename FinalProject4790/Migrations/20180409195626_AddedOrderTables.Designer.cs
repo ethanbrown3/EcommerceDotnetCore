@@ -11,9 +11,10 @@ using System;
 namespace FinalProject4790.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180409195626_AddedOrderTables")]
+    partial class AddedOrderTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,25 +46,11 @@ namespace FinalProject4790.Migrations
 
                     b.Property<string>("CreditTransactionId");
 
-                    b.Property<string>("OrderCity");
-
                     b.Property<DateTime>("OrderDate");
-
-                    b.Property<string>("OrderFirstName");
-
-                    b.Property<string>("OrderLastName");
-
-                    b.Property<string>("OrderPhoneNumber");
-
-                    b.Property<string>("OrderState");
-
-                    b.Property<string>("OrderStreetAddress1");
-
-                    b.Property<string>("OrderStreetAddress2");
 
                     b.Property<decimal>("OrderTotal");
 
-                    b.Property<string>("OrderZip");
+                    b.Property<int>("UserId");
 
                     b.HasKey("OrderId");
 
@@ -75,13 +62,7 @@ namespace FinalProject4790.Migrations
                     b.Property<int>("OrderLineItemId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("OrderId");
-
-                    b.Property<int>("OrderLineItemOrderId");
-
-                    b.Property<decimal>("OrderLineItemPrice");
-
-                    b.Property<int>("OrderLineItemQuantity");
+                    b.Property<int>("OrderId");
 
                     b.Property<int>("OrderProductId");
 
@@ -148,7 +129,8 @@ namespace FinalProject4790.Migrations
                 {
                     b.HasOne("FinalProject4790.Models.Domain.Order", "Order")
                         .WithMany("OrderLineItems")
-                        .HasForeignKey("OrderId");
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("FinalProject4790.Models.Domain.Product", "OrderProduct")
                         .WithMany()

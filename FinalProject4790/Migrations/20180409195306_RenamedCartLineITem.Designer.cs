@@ -11,9 +11,10 @@ using System;
 namespace FinalProject4790.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180409195306_RenamedCartLineITem")]
+    partial class RenamedCartLineITem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,62 +37,6 @@ namespace FinalProject4790.Migrations
                     b.HasIndex("CartItemProductId");
 
                     b.ToTable("CartItems");
-                });
-
-            modelBuilder.Entity("FinalProject4790.Models.Domain.Order", b =>
-                {
-                    b.Property<int>("OrderId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CreditTransactionId");
-
-                    b.Property<string>("OrderCity");
-
-                    b.Property<DateTime>("OrderDate");
-
-                    b.Property<string>("OrderFirstName");
-
-                    b.Property<string>("OrderLastName");
-
-                    b.Property<string>("OrderPhoneNumber");
-
-                    b.Property<string>("OrderState");
-
-                    b.Property<string>("OrderStreetAddress1");
-
-                    b.Property<string>("OrderStreetAddress2");
-
-                    b.Property<decimal>("OrderTotal");
-
-                    b.Property<string>("OrderZip");
-
-                    b.HasKey("OrderId");
-
-                    b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("FinalProject4790.Models.Domain.OrderLineItem", b =>
-                {
-                    b.Property<int>("OrderLineItemId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("OrderId");
-
-                    b.Property<int>("OrderLineItemOrderId");
-
-                    b.Property<decimal>("OrderLineItemPrice");
-
-                    b.Property<int>("OrderLineItemQuantity");
-
-                    b.Property<int>("OrderProductId");
-
-                    b.HasKey("OrderLineItemId");
-
-                    b.HasIndex("OrderId");
-
-                    b.HasIndex("OrderProductId");
-
-                    b.ToTable("OrderLineItems");
                 });
 
             modelBuilder.Entity("FinalProject4790.Models.Domain.Product", b =>
@@ -141,18 +86,6 @@ namespace FinalProject4790.Migrations
                     b.HasOne("FinalProject4790.Models.Domain.Product", "CartItemProduct")
                         .WithMany()
                         .HasForeignKey("CartItemProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("FinalProject4790.Models.Domain.OrderLineItem", b =>
-                {
-                    b.HasOne("FinalProject4790.Models.Domain.Order", "Order")
-                        .WithMany("OrderLineItems")
-                        .HasForeignKey("OrderId");
-
-                    b.HasOne("FinalProject4790.Models.Domain.Product", "OrderProduct")
-                        .WithMany()
-                        .HasForeignKey("OrderProductId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

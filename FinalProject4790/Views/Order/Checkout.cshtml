@@ -1,0 +1,66 @@
+@model Order
+<form asp-action="Checkout" method="POST" class="form-horizontal" role="form">
+    <h3>Checkout</h3>
+
+    <div class="form-group">
+        <label asp-for="OrderLastName" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="OrderLastName" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderFirstName" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="OrderFirstName" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderStreetAddress1" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="OrderStreetAddress1" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderStreetAddress2" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="OrderStreetAddress2" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderCity" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="OrderCity" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderState" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="OrderState" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderZip" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="OrderZip" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderPhoneNumber" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="OrderPhoneNumber" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5">
+            <input type="submit" class="btn btn-primary" value="Complete order" />
+        </div>
+    </div>
+</form>

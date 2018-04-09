@@ -19,7 +19,7 @@ namespace FinalProject4790.Views.Components
         {
             var items = _shoppingCart.GetShoppingCartLineItems();
             // var items = new List<LineItem>() { new LineItem(), new LineItem() };
-            _shoppingCart.ShoppingCartLineItems = items;
+            _shoppingCart.ShoppingCartItems = items;
 
             var shoppingCartViewModel = new ShoppingCartViewModel
             {

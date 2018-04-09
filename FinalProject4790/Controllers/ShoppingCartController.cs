@@ -33,7 +33,7 @@ namespace FinalProject4790.Controllers
         public ViewResult Index()
         {
             var items = _shoppingCart.GetShoppingCartLineItems();
-            _shoppingCart.ShoppingCartLineItems = items;
+            _shoppingCart.ShoppingCartItems = items;
 
             var shoppingCartViewModel = new ShoppingCartViewModel
             {

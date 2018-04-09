@@ -11,9 +11,10 @@ using System;
 namespace FinalProject4790.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180409201032_EditedOrderTables")]
+    partial class EditedOrderTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,25 +46,11 @@ namespace FinalProject4790.Migrations
 
                     b.Property<string>("CreditTransactionId");
 
-                    b.Property<string>("OrderCity");
-
                     b.Property<DateTime>("OrderDate");
-
-                    b.Property<string>("OrderFirstName");
-
-                    b.Property<string>("OrderLastName");
-
-                    b.Property<string>("OrderPhoneNumber");
-
-                    b.Property<string>("OrderState");
-
-                    b.Property<string>("OrderStreetAddress1");
-
-                    b.Property<string>("OrderStreetAddress2");
 
                     b.Property<decimal>("OrderTotal");
 
-                    b.Property<string>("OrderZip");
+                    b.Property<int>("UserId");
 
                     b.HasKey("OrderId");
 

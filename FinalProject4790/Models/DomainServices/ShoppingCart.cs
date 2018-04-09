@@ -18,7 +18,7 @@ namespace FinalProject4790.Models.DomainServices
 
         public string ShoppingCartId { get; set; }
 
-        public List<CartItem> ShoppingCartLineItems { get; set; }
+        public List<CartItem> ShoppingCartItems { get; set; }
 
         /// <summary>
         /// Returns a shopping cart based on the Session
@@ -104,8 +104,8 @@ namespace FinalProject4790.Models.DomainServices
         /// <returns>List of LineItems</returns>
         public List<CartItem> GetShoppingCartLineItems()
         {
-            return ShoppingCartLineItems ??
-                   (ShoppingCartLineItems =
+            return ShoppingCartItems ??
+                   (ShoppingCartItems =
                        _appDbContext.CartItems.Where(c => c.CartShoppingCartId == ShoppingCartId)
                            .Include(s => s.CartItemProduct)
                            .ToList());
