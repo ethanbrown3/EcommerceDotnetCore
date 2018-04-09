@@ -16,7 +16,7 @@ namespace FinalProject4790.Models
 
         public DbSet<Seller> Sellers { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<CartLineItem> LineItems { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
 
     }
 }

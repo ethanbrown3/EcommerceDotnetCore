@@ -58,7 +58,7 @@ namespace FinalProject4790.Tests.Models.Tests
             var productAdded = _shoppingCart.GetShoppingCartLineItems()[0];
             _shoppingCart.ClearCart();
             // Assert
-            Assert.AreEqual(productToAdd.ProductId, productAdded.CartLineItemProductId);
+            Assert.AreEqual(productToAdd.ProductId, productAdded.CartItemProductId);
         }
 
         [Test]

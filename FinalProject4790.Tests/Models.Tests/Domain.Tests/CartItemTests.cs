@@ -8,22 +8,22 @@ using System.Collections.Generic;
 
 namespace FinalProject4790.Tests.Models.Domain.Tests
 {
-    public class LineItemTests
+    public class CartItemTests
     {
-        private CartLineItem lineItem;
+        private CartItem lineItem;
         [SetUp]
         public void Setup()
         {
             // Arrange
-            lineItem = new CartLineItem();
+            lineItem = new CartItem();
         }
 
         [Test]
         public void LineItemSetGetId()
         {
-            lineItem.CartLineItemId = 100;
+            lineItem.CartItemId = 100;
 
-            Assert.AreEqual(lineItem.CartLineItemId, 100);
+            Assert.AreEqual(lineItem.CartItemId, 100);
         }
 
         [Test]
@@ -32,11 +32,11 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
             var product = new Product();
             product.ProductId = 100;
 
-            lineItem.CartLineItemProduct = product;
-            lineItem.CartLineItemProductId = product.ProductId;
+            lineItem.CartItemProduct = product;
+            lineItem.CartItemProductId = product.ProductId;
 
-            Assert.AreEqual(lineItem.CartLineItemProductId, 100);
-            Assert.AreEqual(lineItem.CartLineItemProduct, product);
+            Assert.AreEqual(lineItem.CartItemProductId, 100);
+            Assert.AreEqual(lineItem.CartItemProduct, product);
         }
 
     }
