@@ -1,6 +1,7 @@
 using System;
 using FinalProject4790.Models.Domain;
 using FinalProject4790.Models.DomainServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinalProject4790.Controllers
@@ -16,12 +17,14 @@ namespace FinalProject4790.Controllers
             _shoppingCart = shoppingCart;
         }
 
+        [Authorize]
         public IActionResult Checkout()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Checkout(Order order)
         {
             var items = _shoppingCart.GetShoppingCartLineItems();

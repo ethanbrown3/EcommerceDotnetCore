@@ -1,13 +1,15 @@
 using System.Threading.Tasks;
 using FinalProject4790.Views.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinalProject4790.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
- private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         public AccountController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
         {
@@ -16,12 +18,14 @@ namespace FinalProject4790.Controllers
         }
 
         // GET: /<controller>/
+        [AllowAnonymous]
         public IActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel loginViewModel)
         {
             if (!ModelState.IsValid)
@@ -59,12 +63,14 @@ namespace FinalProject4790.Controllers
             ModelState.AddModelError("", "Invalid Username or Password");
             return View(loginViewModel);
         }
+        [AllowAnonymous]
         public IActionResult Register()
         {
             return View(new LoginViewModel());
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Register(LoginViewModel loginViewModel)
         {
             if (!ModelState.IsValid)
