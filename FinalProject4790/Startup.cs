@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using FinalProject4790.Models;
 using FinalProject4790.Models.DomainServices;
+using Microsoft.AspNetCore.Identity;
 
 namespace FinalProject4790
 {
@@ -27,6 +28,9 @@ namespace FinalProject4790
         {
             services.AddDbContext<AppDbContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>();
 
             // Register Repositories with DI
             services.AddTransient<ISellerRepository, SellerRepository>();
@@ -51,6 +55,7 @@ namespace FinalProject4790
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseSession();
+            app.UseAuthentication();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
