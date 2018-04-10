@@ -1,4 +1,5 @@
 using System;
+using FinalProject4790.Models.Domain;
 using FinalProject4790.Models.DomainServices;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +18,33 @@ namespace FinalProject4790.Controllers
 
         public IActionResult Checkout()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Checkout(Order order)
+        {
+            var items = _shoppingCart.GetShoppingCartLineItems();
+            _shoppingCart.ShoppingCartItems = items;
+
+            if (_shoppingCart.ShoppingCartItems.Count == 0)
+            {
+                ModelState.AddModelError("", "Your cart is empty");
+            }
+
+            if (ModelState.IsValid)
+            {
+                _orderRepository.CreateOrder(order);
+                _shoppingCart.ClearCart();
+                return RedirectToAction("CheckoutComplete");
+            }
+
+            return View(order);
+        }
+
+        public IActionResult CheckoutComplete()
+        {
+            ViewBag.CheckoutCompleteMessage = "Thank you for shopping with us!";
             return View();
         }
     }

@@ -19,14 +19,14 @@ namespace FinalProject4790.Models.DomainServices
             order.OrderDate = DateTime.Now;
 
             var shoppingCartItems = _shoppingCart.ShoppingCartItems;
-
+            _appDbContext.Orders.Add(order);
             foreach(var shoppingCartItem in shoppingCartItems)
             {
                 var orderLineItem = new OrderLineItem()
                 {
                     OrderLineItemQuantity = shoppingCartItem.CartItemQuantity,
-                    OrderProductId = shoppingCartItem.CartItemProductId,
-                    OrderLineItemOrderId = order.OrderId,
+                    ProductId = shoppingCartItem.CartItemProductId,
+                    OrderId = order.OrderId,
                     OrderLineItemPrice = shoppingCartItem.CartItemProduct.ProductPrice
                 };
 

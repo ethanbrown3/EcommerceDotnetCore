@@ -41,13 +41,13 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
             Assert.AreEqual(order.OrderDate.Second, 5);
         }
 
-        [Test]
-        public void Order_SetGetUserId()
-        {
-            order.UserId = 100;
+        // [Test]
+        // public void Order_SetGetUserId()
+        // {
+        //     order.UserId = 100;
 
-            Assert.AreEqual(order.UserId, 100);
-        }
+        //     Assert.AreEqual(order.UserId, 100);
+        // }
 
         [Test]
         public void Order_SetGetLineItems()

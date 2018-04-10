@@ -12,11 +12,12 @@ namespace FinalProject4790.Models.Domain
     public class OrderLineItem
     {
         public int OrderLineItemId { get; set; }
-        public int OrderLineItemOrderId { get; set; }
         public decimal OrderLineItemPrice { get; set; }
-        public Order Order { get; set; }
         public int OrderLineItemQuantity { get; set; }
         public Product OrderProduct { get; set; }
-        public int OrderProductId { get; set; }
+        public int ProductId { get; set; }
+        public Order Order { get; set; }
+        public int OrderId { get; set; }
+
     }
 }
