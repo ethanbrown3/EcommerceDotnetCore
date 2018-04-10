@@ -1,12 +1,10 @@
 @model ShoppingCartViewModel
 
-{
-    <li>
-        <a asp-controller="ShoppingCart" asp-action="Index">
-            <span class="glyphicon glyphicon-shopping-cart"></span>
-            <span id="cart-status">
-                @Model.ShoppingCart.GetTotalNumberOfItems()
-            </span>
-        </a>
-    </li>
-}
+<li>
+    <a asp-controller="ShoppingCart" asp-action="Index">
+        <span class="glyphicon glyphicon-shopping-cart"></span>
+        <span id="cart-status">
+            @Model.ShoppingCart.GetTotalNumberOfItems()
+        </span>
+    </a>
+</li>
