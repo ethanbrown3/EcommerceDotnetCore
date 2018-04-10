@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using FinalProject4790.Models;
-using FinalProject4790.ViewModels;
+using FinalProject4790.Views.ViewModels;
 using FinalProject4790.Models.DomainServices;
 using FinalProject4790.Models.Domain;
 

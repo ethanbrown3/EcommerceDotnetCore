@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using FinalProject4790.Models.Domain;
 using FinalProject4790.Models.DomainServices;
-using FinalProject4790.ViewModels;
+using FinalProject4790.Views.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinalProject4790.Views.Components
