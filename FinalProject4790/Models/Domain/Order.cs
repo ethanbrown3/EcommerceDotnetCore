@@ -9,6 +9,8 @@ namespace FinalProject4790.Models.Domain
 {
     /// <summary>
     /// Order Model class: represents orders placed by customers
+    /// NOTE: I'd like to remove the ModelBinding Dependency here
+    /// but I haven't figured out how yet.
     /// </summary>
     public class Order
     {
@@ -19,14 +21,14 @@ namespace FinalProject4790.Models.Domain
         [ScaffoldColumn(false)]
         public DateTime OrderDate { get; set; }
         public string CreditTransactionId { get; set; }
-        [Display(Name = "Last Name")]
-        [StringLength(50)]
-        [Required(ErrorMessage = "Please Enter Last Name")]
-        public string OrderLastName { get; set; }
         [Display(Name = "First Name")]
         [StringLength(50)]
         [Required(ErrorMessage = "Please Enter First Name")]
         public string OrderFirstName { get; set; }
+        [Display(Name = "Last Name")]
+        [StringLength(50)]
+        [Required(ErrorMessage = "Please Enter Last Name")]
+        public string OrderLastName { get; set; }
         [Display(Name = "Address 1")]
         [Required(ErrorMessage = "Please Enter a Street Address")]
         public string OrderStreetAddress1 { get; set; }
