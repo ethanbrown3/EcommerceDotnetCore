@@ -20,6 +20,11 @@ namespace FinalProject4790.Controllers
         [Authorize]
         public IActionResult Checkout()
         {
+            if (_shoppingCart.GetTotalNumberOfItems() == 0)
+            {
+                ModelState.AddModelError("", "Your cart is empty");
+                return RedirectToAction("Index", "ShoppingCart");
+            }
             return View();
         }
 
@@ -30,7 +35,7 @@ namespace FinalProject4790.Controllers
             var items = _shoppingCart.GetShoppingCartLineItems();
             _shoppingCart.ShoppingCartItems = items;
 
-            if (_shoppingCart.ShoppingCartItems.Count == 0)
+            if (_shoppingCart.GetTotalNumberOfItems() == 0)
             {
                 ModelState.AddModelError("", "Your cart is empty");
             }
