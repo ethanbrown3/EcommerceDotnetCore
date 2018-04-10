@@ -1,6 +1,6 @@
 using FinalProject4790.Models.DomainServices;
 
-namespace FinalProject4790.ViewModels
+namespace FinalProject4790.Views.ViewModels
 {
     public class ShoppingCartViewModel
     {

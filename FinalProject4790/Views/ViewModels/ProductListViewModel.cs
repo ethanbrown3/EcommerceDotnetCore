@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using FinalProject4790.Models.Domain;
  
 
-namespace FinalProject4790.ViewModels
+namespace FinalProject4790.Views.ViewModels
 {
     public class ProductListViewModel
     {
