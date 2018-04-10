@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -13,9 +12,9 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-controller="Home" asp-action="Index" class="navbar-brand">CS4790 - Ethan Brown</a></li>
-                    <li>@await Component.InvokeAsync("ShoppingCartSummary")</li>
-
+                    @await Component.InvokeAsync("ShoppingCartSummary")
                 </ul>
+                @await Html.PartialAsync("LoginPartial")
             </div>
         </div>
     </nav>
