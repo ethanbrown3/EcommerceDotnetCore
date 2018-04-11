@@ -1,9 +1,22 @@
+@using System.Security.Claims
+@using System.Threading.Tasks
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity.EntityFrameworkCore
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject IAuthorizationService AuthorizationService
+@inject UserManager<IdentityUser> UserManager
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="~/content/site.css" />
 </head>
 <body>
@@ -13,6 +26,10 @@
                 <ul class="nav navbar-nav">
                     <li><a asp-controller="Home" asp-action="Index" class="navbar-brand">CS4790 - Ethan Brown</a></li>
                     @await Component.InvokeAsync("ShoppingCartSummary")
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        @await Component.InvokeAsync("AdminMenu")
+                    }
                 </ul>
                 @await Html.PartialAsync("LoginPartial")
             </div>
