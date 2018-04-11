@@ -79,7 +79,12 @@ namespace FinalProject4790.Controllers
             }
             else
             {
-                var user = new IdentityUser() { UserName = loginViewModel.UserName };
+                var user = new IdentityUser()
+                {
+                    UserName = loginViewModel.UserName,
+                    Email = loginViewModel.Email
+                };
+                
                 var result = await _userManager.CreateAsync(user, loginViewModel.Password);
                 if (!result.Succeeded)
                 {

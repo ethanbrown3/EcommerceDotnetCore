@@ -92,6 +92,11 @@ namespace FinalProject4790.Controllers
             return RedirectToAction("UserManagement", _userManager.Users);
         }
 
+        /// <summary>
+        /// Delete user by user id
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns>UserManagement View</returns>
         [HttpPost]
         public async Task<IActionResult> DeleteUser(string userId)
         {
