@@ -42,7 +42,9 @@ namespace FinalProject4790.Controllers
                 {
                     return RedirectToAction("Index", "Home");
                 }
-            }           if (!ModelState.IsValid)
+            }           
+            
+            if (!ModelState.IsValid)
                 return View(loginViewModel);
 
             user = await
