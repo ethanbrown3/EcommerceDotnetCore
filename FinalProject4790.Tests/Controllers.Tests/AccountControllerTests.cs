@@ -18,7 +18,8 @@ namespace FinalProject4790.Tests.Controllers.Tests
         private MockSignInManager signInManager;
         private MockUserManager userManager;
         private AccountController controller;
-        private LoginViewModel loginViewModel;
+        private LoginViewModel validLoginViewModel;
+        private LoginViewModel invalidLoginViewModel;
         
         [SetUp]
         public void Setup()
@@ -33,11 +34,12 @@ namespace FinalProject4790.Tests.Controllers.Tests
             signInManager = new MockSignInManager();
 
             controller = new AccountController(signInManager, userManager);
-            loginViewModel = new LoginViewModel()
+            validLoginViewModel = new LoginViewModel()
             {
                 UserName = "username",
                 Email = "test@email.com"
             };
+            invalidLoginViewModel = null;
         }
 
         [Test]
@@ -50,10 +52,37 @@ namespace FinalProject4790.Tests.Controllers.Tests
         }
 
         [Test]
-        public void AccountController_LoginViewModelLoginRedirects()
+        public void AccountController_LoginValidModel()
         {
             // Act
-            var result = controller.Login(loginViewModel);
+            var result = controller.Login(validLoginViewModel);
+            // Assert
+            Assert.IsInstanceOf<Task<IActionResult>>(result);
+        }
+
+        [Test]
+        public void AccountController_LoginInvalidModel()
+        {
+            // Act
+            var result = controller.Login(invalidLoginViewModel);
+            // Assert
+            Assert.IsInstanceOf<Task<IActionResult>>(result);
+        }
+
+        [Test]
+        public void AccountController_RegisterValidModel()
+        {
+            // Act
+            var result = controller.Register(validLoginViewModel);
+            // Assert
+            Assert.IsInstanceOf<Task<IActionResult>>(result);
+        }
+
+        [Test]
+        public void AccountController_RegisterInvalidModel()
+        {
+            // Act
+            var result = controller.Register(invalidLoginViewModel);
             // Assert
             Assert.IsInstanceOf<Task<IActionResult>>(result);
         }
