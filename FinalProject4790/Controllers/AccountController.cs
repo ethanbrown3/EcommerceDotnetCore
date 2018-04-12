@@ -43,24 +43,6 @@ namespace FinalProject4790.Controllers
                     return RedirectToAction("Index", "Home");
                 }
             }           
-            
-            if (!ModelState.IsValid)
-                return View(loginViewModel);
-
-            user = await
-                _userManager.FindByNameAsync(loginViewModel.UserName);
-
-            if (user != null)
-            {
-                var result = await 
-                    _signInManager.PasswordSignInAsync
-                        (user, loginViewModel.Password, false, false);
-
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Index", "Home");
-                }
-            }
 
             ModelState.AddModelError("", "Invalid Username or Password");
             return View(loginViewModel);
