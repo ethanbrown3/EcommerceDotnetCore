@@ -46,28 +46,29 @@ namespace FinalProject4790.Tests.Controllers.Tests
         public void AdminController_IndexReturnsIActionResult()
         {
             // Act
-            var result = controller.Index() as IActionResult;
+            var result = controller.Index() as ViewResult;
             // Assert
-            Assert.IsInstanceOf<IActionResult>(result);
+            Assert.IsInstanceOf<ViewResult>(result);
         }
 
         [Test]
-        public void AdminController_UserManagementReturnsIActionResul()
+        public void AdminController_UserManagementReturnsIActionResult()
         {
             // Act
-            var result = controller.UserManagement() as IActionResult;
+            var result = controller.UserManagement() as ViewResult;
             // Assert
-            Assert.IsInstanceOf<IActionResult>(result);
+            Assert.IsInstanceOf<ViewResult>(result);
         }
 
         [Test]
-        public void AdminController_AddUserReturnsIActionResul()
+        public void AdminController_AddUserReturnsIActionResult()
         {
             // Act
-            var result = controller.AddUser() as IActionResult;
+            var result = controller.AddUser() as ViewResult;
             // Assert
-            Assert.IsInstanceOf<IActionResult>(result);
+            Assert.IsInstanceOf<ViewResult>(result);
         }
+
 
     }
 }
