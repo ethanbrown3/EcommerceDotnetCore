@@ -127,6 +127,7 @@ namespace FinalProject4790.Controllers
 
         public IActionResult AddNewRole() => View();
 
+        [HttpPost]
         public async Task<IActionResult> AddNewRole(AddRoleViewModel addRoleViewModel)
         {
             if (!ModelState.IsValid) 

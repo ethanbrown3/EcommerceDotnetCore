@@ -1,10 +1,11 @@
 @using Microsoft.AspNetCore.Identity.EntityFrameworkCore
+@using Microsoft.AspNetCore.Identity
 
 @model IEnumerable<IdentityRole>
 
 <h2>Role Management</h2>
 
-@if (!Model.Any)
+@if (!Model.Any())
 {
     <tr><td colspan="3" class="text-center">No Roles defined.</td></tr>
 }
@@ -34,5 +35,5 @@ else
     </table>
 }
 <p>
-    <a class="btn btn-primary" asp-action="AddUser">Add new role</a>
+    <a class="btn btn-primary" asp-action="AddNewRole">Add new role</a>
 </p>
