@@ -10,6 +10,9 @@ using Moq;
 
 namespace FinalProject4790.Tests.Controllers.Tests
 {
+    /// <summary>
+    /// Mocke SignInManager for tests using Moq. 
+    /// </summary>
     public class MockSignInManager : SignInManager<IdentityUser>
     {
         public MockSignInManager()

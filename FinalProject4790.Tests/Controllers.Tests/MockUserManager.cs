@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -8,6 +9,9 @@ using Moq;
 
 namespace FinalProject4790.Tests.Controllers.Tests
 {
+    /// <summary>
+    /// Mocked Identity RoleManager using Moq.
+    /// </summary>
     public class MockUserManager : UserManager<IdentityUser>
     {
         public MockUserManager()
@@ -23,6 +27,6 @@ namespace FinalProject4790.Tests.Controllers.Tests
                 new Mock<ILogger<UserManager<IdentityUser>>>().Object
             )
         { }
-
+        public override IQueryable<IdentityUser> Users { get; }
     }
 }
