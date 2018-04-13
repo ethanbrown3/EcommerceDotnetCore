@@ -26,7 +26,7 @@
                 <ul class="nav navbar-nav">
                     <li><a asp-controller="Home" asp-action="Index" class="navbar-brand">CS4790 - Ethan Brown</a></li>
                     @await Component.InvokeAsync("ShoppingCartSummary")
-                    @if (SignInManager.IsSignedIn(User))
+                    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admins"))
                     {
                         @await Component.InvokeAsync("AdminMenu")
                     }
