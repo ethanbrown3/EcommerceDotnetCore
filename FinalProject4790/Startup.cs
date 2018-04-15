@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using FinalProject4790.Models;
 using FinalProject4790.Models.DomainServices;
 using Microsoft.AspNetCore.Identity;
+using Stripe;
 
 namespace FinalProject4790
 {
@@ -34,7 +35,7 @@ namespace FinalProject4790
                     options.User.RequireUniqueEmail = true;
                 })
                 .AddEntityFrameworkStores<AppDbContext>();
-
+            services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
             // Register Repositories with DI
             services.AddTransient<ISellerRepository, SellerRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
@@ -53,6 +54,7 @@ namespace FinalProject4790
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            StripeConfiguration.SetApiKey(Configuration.GetSection("Stripe")["SecretKey"]);
             // order is important
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
