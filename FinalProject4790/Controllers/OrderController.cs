@@ -1,8 +1,11 @@
 using System;
+using System.Threading.Tasks;
 using FinalProject4790.Models.Domain;
 using FinalProject4790.Models.DomainServices;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Stripe;
 
 namespace FinalProject4790.Controllers
 {
@@ -10,8 +13,9 @@ namespace FinalProject4790.Controllers
     {
         private readonly IOrderRepository _orderRepository;
         private readonly ShoppingCart _shoppingCart;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public OrderController(IOrderRepository orderRepository, ShoppingCart shoppingCart)
+        public OrderController(IOrderRepository orderRepository, ShoppingCart shoppingCart, UserManager<IdentityUser> userManager)
         {
             _orderRepository = orderRepository;
             _shoppingCart = shoppingCart;
@@ -30,7 +34,7 @@ namespace FinalProject4790.Controllers
 
         [HttpPost]
         [Authorize]
-        public IActionResult Checkout(Order order)
+        public async Task<IActionResult> CheckoutAsync(Order order, string stripeToken)
         {
             var items = _shoppingCart.GetShoppingCartLineItems();
             _shoppingCart.ShoppingCartItems = items;
@@ -42,13 +46,37 @@ namespace FinalProject4790.Controllers
 
             if (ModelState.IsValid)
             {
+                
+                
+                var customers = new StripeCustomerService();
+                var charges = new StripeChargeService();
+
+                IdentityUser user = await GetCurrentUserAsync();
+                var email = user.Email;
+
+                var customer = customers.Create(new StripeCustomerCreateOptions {
+                    Email = email,
+                    SourceToken = stripeToken
+                });
+                var totalCharge = (int)_shoppingCart.GetShoppingCartTotal() * 100;
+
+                var charge = charges.Create(new StripeChargeCreateOptions {
+                    Amount = totalCharge,
+                    Description = "Sample Charge",
+                    Currency = "usd",
+                    CustomerId = customer.Id
+                });
+                Console.Write(charge);
                 _orderRepository.CreateOrder(order);
                 _shoppingCart.ClearCart();
+
                 return RedirectToAction("CheckoutComplete");
             }
+            
 
             return View(order);
         }
+        private Task<IdentityUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
         public IActionResult CheckoutComplete()
         {

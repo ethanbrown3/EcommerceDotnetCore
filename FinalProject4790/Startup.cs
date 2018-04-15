@@ -35,7 +35,6 @@ namespace FinalProject4790
                     options.User.RequireUniqueEmail = true;
                 })
                 .AddEntityFrameworkStores<AppDbContext>();
-            services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
             // Register Repositories with DI
             services.AddTransient<ISellerRepository, SellerRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
@@ -43,7 +42,7 @@ namespace FinalProject4790
             
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
-
+            services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
             services.AddMvc()
                 .AddSessionStateTempDataProvider();
             

@@ -1,3 +1,6 @@
+@using Microsoft.Extensions.Options
+@inject IOptions<StripeSettings> Stripe
+
 @model Order
 <form asp-action="Checkout" method="POST" class="form-horizontal" role="form">
     <h3>Checkout</h3>
@@ -69,7 +72,13 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-5">
-            <input type="submit" class="btn btn-primary" value="Complete order" />
+            <script src="//checkout.stripe.com/v2/checkout.js"
+                    class="stripe-button"
+                    data-key="@Stripe.Value.PublishableKey"
+                    data-locale="auto"
+                    data-description="Sample Charge"
+                    data-amount="500">
+            </script>
         </div>
     </div>
 </form>
