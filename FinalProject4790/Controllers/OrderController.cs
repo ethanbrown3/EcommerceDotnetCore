@@ -34,7 +34,7 @@ namespace FinalProject4790.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> CheckoutAsync(Order order, string stripeToken)
+        public async Task<IActionResult> CheckoutAsync(Order order)
         {
             var items = _shoppingCart.GetShoppingCartLineItems();
             _shoppingCart.ShoppingCartItems = items;
@@ -56,7 +56,7 @@ namespace FinalProject4790.Controllers
 
                 var customer = customers.Create(new StripeCustomerCreateOptions {
                     Email = email,
-                    SourceToken = stripeToken
+                    SourceToken = "pk_test_6pRNASCoBOKtIshFeQd4XMUh"
                 });
                 var totalCharge = (int)_shoppingCart.GetShoppingCartTotal() * 100;
 

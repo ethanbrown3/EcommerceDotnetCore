@@ -2,7 +2,7 @@
 @inject IOptions<StripeSettings> Stripe
 
 @model Order
-<form asp-action="Checkout" method="POST" class="form-horizontal" role="form">
+<form asp-controller="Order" asp-action="Checkout" method="POST" class="form-horizontal" role="form">
     <h3>Checkout</h3>
 
     <div app-validation-summary="All" class="text-danger"></div>
@@ -73,11 +73,11 @@
     <div class="form-group">
         <div class="col-md-offset-2 col-md-5">
             <script src="//checkout.stripe.com/v2/checkout.js"
-                    class="stripe-button"
-                    data-key="@Stripe.Value.PublishableKey"
-                    data-locale="auto"
-                    data-description="Sample Charge"
-                    data-amount="500">
+                class="stripe-button"
+                data-key="@Stripe.Value.PublishableKey"
+                data-locale="auto"
+                data-description="Sample Charge"
+                data-amount="500">
             </script>
         </div>
     </div>
