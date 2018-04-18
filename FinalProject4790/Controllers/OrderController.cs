@@ -31,10 +31,10 @@ namespace FinalProject4790.Controllers
             }
             return View();
         }
-
-        [HttpPost]
+        
         [Authorize]
-        public async Task<IActionResult> CheckoutAsync(Order order)
+        [HttpPost]
+        public async Task<IActionResult> Checkout(Order order, string stripeEmail, string stripeToken)
         {
             var items = _shoppingCart.GetShoppingCartLineItems();
             _shoppingCart.ShoppingCartItems = items;
@@ -55,8 +55,8 @@ namespace FinalProject4790.Controllers
                 var email = user.Email;
 
                 var customer = customers.Create(new StripeCustomerCreateOptions {
-                    Email = email,
-                    SourceToken = "pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+                    Email = stripeEmail,
+                    SourceToken = stripeToken
                 });
                 var totalCharge = (int)_shoppingCart.GetShoppingCartTotal() * 100;
 
