@@ -21,6 +21,8 @@ namespace FinalProject4790.Models
         public DbSet<CartItem> CartItems { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderLineItem> OrderLineItems { get; set; }
+        public DbSet<CreditTransaction> CreditTransactions { get; set; }
+
 
     }
 }

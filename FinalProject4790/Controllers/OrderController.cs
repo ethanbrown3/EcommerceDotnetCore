@@ -19,6 +19,7 @@ namespace FinalProject4790.Controllers
         {
             _orderRepository = orderRepository;
             _shoppingCart = shoppingCart;
+            _userManager = userManager;
         }
 
         [Authorize]
@@ -31,7 +32,14 @@ namespace FinalProject4790.Controllers
             }
             return View();
         }
-        
+
+        /// <summary>
+        /// Creates an Order and CreditTransaction using input from the customer and stripe to charge their card.
+        /// </summary>
+        /// <param name="order"></param>
+        /// <param name="stripeEmail"></param>
+        /// <param name="stripeToken"></param>
+        /// <returns>IActionResult CheckoutComplete</returns>
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> Checkout(Order order, string stripeEmail, string stripeToken)
@@ -55,7 +63,7 @@ namespace FinalProject4790.Controllers
                 var email = user.Email;
 
                 var customer = customers.Create(new StripeCustomerCreateOptions {
-                    Email = stripeEmail,
+                    Email = user.Email,
                     SourceToken = stripeToken
                 });
                 var totalCharge = (int)_shoppingCart.GetShoppingCartTotal() * 100;
@@ -66,7 +74,10 @@ namespace FinalProject4790.Controllers
                     Currency = "usd",
                     CustomerId = customer.Id
                 });
-                Console.Write(charge);
+
+                order.CreditTransactionId = charge.Id;
+                order.OrderUserId = user.Id;
+
                 _orderRepository.CreateOrder(order);
                 _shoppingCart.ClearCart();
 
