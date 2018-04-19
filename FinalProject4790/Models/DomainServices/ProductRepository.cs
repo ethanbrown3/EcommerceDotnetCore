@@ -13,6 +13,10 @@ namespace FinalProject4790.Models.DomainServices
     {
         private readonly AppDbContext _appDbContext;
 
+        /// <summary>
+        /// Constructor for ProductRepository
+        /// </summary>
+        /// <param name="appDbContext"></param>
         public ProductRepository(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;

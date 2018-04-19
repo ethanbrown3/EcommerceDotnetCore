@@ -8,6 +8,10 @@ namespace FinalProject4790.Models
 {
     public class DbInitializer
     {
+        /// <summary>
+        /// Seed the AppDbContext with mock data
+        /// </summary>
+        /// <param name="context"></param>
         public static void Seed(AppDbContext context)
         {
             if (!context.Sellers.Any())

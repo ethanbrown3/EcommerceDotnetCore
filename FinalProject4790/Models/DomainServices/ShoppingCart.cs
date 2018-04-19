@@ -11,6 +11,11 @@ namespace FinalProject4790.Models.DomainServices
     public class ShoppingCart
     {
         private readonly AppDbContext _appDbContext;
+
+        /// <summary>
+        /// Constructor for ShoppingCart
+        /// </summary>
+        /// <param name="appDbContext"></param>
         public ShoppingCart(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
