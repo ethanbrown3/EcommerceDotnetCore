@@ -7,10 +7,20 @@ namespace FinalProject4790.Models.DomainServices
     {
         private readonly AppDbContext _appDbContext;
 
+        /// <summary>
+        /// Repository for CreditTransactions
+        /// </summary>
+        /// <param name="appDbContext"></param>
         public CreditTransactionRepository(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
         }
+
+        /// <summary>
+        /// Create a CreditTransaction from a StripCharge and Order.
+        /// </summary>
+        /// <param name="stripeCharge"></param>
+        /// <param name="order"></param>
         public void CreateCreditTransactionFromStripeCharge(StripeCharge stripeCharge, Order order)
         {
             

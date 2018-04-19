@@ -3,6 +3,9 @@ using FinalProject4790.Models.Domain;
 
 namespace FinalProject4790.Models.DomainServices
 {
+    /// <summary>
+    /// Repository for Orders
+    /// </summary>
     public class OrderRepository : IOrderRepository
     {
         private readonly AppDbContext _appDbContext;
@@ -14,6 +17,10 @@ namespace FinalProject4790.Models.DomainServices
             _shoppingCart = shoppingCart;
         }
 
+        /// <summary>
+        /// Save passed in Order in DB
+        /// </summary>
+        /// <param name="order"></param>
         public void CreateOrder(Order order)
         {
             order.OrderDate = DateTime.Now;
