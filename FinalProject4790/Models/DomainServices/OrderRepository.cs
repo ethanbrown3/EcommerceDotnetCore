@@ -31,7 +31,7 @@ namespace FinalProject4790.Models.DomainServices
             order.OrderDate = DateTime.Now;
 
             var shoppingCartItems = _shoppingCart.ShoppingCartItems;
-            _appDbContext.Orders.Add(order);
+            
             foreach(var shoppingCartItem in shoppingCartItems)
             {
                 var orderLineItem = new OrderLineItem()
@@ -43,6 +43,10 @@ namespace FinalProject4790.Models.DomainServices
                 };
 
                 _appDbContext.OrderLineItems.Add(orderLineItem);
+            }
+            if (_appDbContext.Orders.Find(order.OrderId) == null)
+            {
+                _appDbContext.Orders.Add(order);
             }
             _appDbContext.SaveChanges();
         }

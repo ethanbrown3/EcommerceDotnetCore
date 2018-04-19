@@ -37,6 +37,9 @@ namespace FinalProject4790.Models.DomainServices
             _appDbContext.CreditTransactions.Add(creditTransaction);
             
             _appDbContext.SaveChanges();
+
+            order.CreditTransactionId = creditTransaction.CreditTransactionId;
+            _appDbContext.Update<Order>(order);
         }
     }
 }

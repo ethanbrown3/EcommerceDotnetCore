@@ -49,17 +49,15 @@ namespace FinalProject4790.Migrations
 
                     b.Property<int>("OrderId");
 
-                    b.Property<bool>("Paid");
+                    b.Property<int?>("OrderId1");
 
-                    b.Property<int>("SellerId");
+                    b.Property<bool>("Paid");
 
                     b.Property<string>("StripeChargeId");
 
                     b.HasKey("CreditTransactionId");
 
-                    b.HasIndex("OrderId");
-
-                    b.HasIndex("SellerId");
+                    b.HasIndex("OrderId1");
 
                     b.ToTable("CreditTransactions");
                 });
@@ -69,7 +67,7 @@ namespace FinalProject4790.Migrations
                     b.Property<int>("OrderId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CreditTransactionId");
+                    b.Property<int>("CreditTransactionId");
 
                     b.Property<string>("OrderCity")
                         .IsRequired();
@@ -337,13 +335,7 @@ namespace FinalProject4790.Migrations
                 {
                     b.HasOne("FinalProject4790.Models.Domain.Order", "Order")
                         .WithMany()
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("FinalProject4790.Models.Domain.Seller", "Seller")
-                        .WithMany()
-                        .HasForeignKey("SellerId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("OrderId1");
                 });
 
             modelBuilder.Entity("FinalProject4790.Models.Domain.OrderLineItem", b =>

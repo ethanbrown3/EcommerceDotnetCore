@@ -11,8 +11,8 @@ using System;
 namespace FinalProject4790.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20180410033359_AddedIdentity")]
-    partial class AddedIdentity
+    [Migration("20180419060439_initialmigration")]
+    partial class initialmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,12 +39,36 @@ namespace FinalProject4790.Migrations
                     b.ToTable("CartItems");
                 });
 
+            modelBuilder.Entity("FinalProject4790.Models.Domain.CreditTransaction", b =>
+                {
+                    b.Property<int>("CreditTransactionId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("AmountInCents");
+
+                    b.Property<DateTime>("Created");
+
+                    b.Property<int>("OrderId");
+
+                    b.Property<int?>("OrderId1");
+
+                    b.Property<bool>("Paid");
+
+                    b.Property<string>("StripeChargeId");
+
+                    b.HasKey("CreditTransactionId");
+
+                    b.HasIndex("OrderId1");
+
+                    b.ToTable("CreditTransactions");
+                });
+
             modelBuilder.Entity("FinalProject4790.Models.Domain.Order", b =>
                 {
                     b.Property<int>("OrderId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CreditTransactionId");
+                    b.Property<int>("CreditTransactionId");
 
                     b.Property<string>("OrderCity")
                         .IsRequired();
@@ -68,6 +92,8 @@ namespace FinalProject4790.Migrations
                         .IsRequired();
 
                     b.Property<string>("OrderStreetAddress2");
+
+                    b.Property<string>("OrderUserId");
 
                     b.Property<string>("OrderZip")
                         .IsRequired();
@@ -304,6 +330,13 @@ namespace FinalProject4790.Migrations
                         .WithMany()
                         .HasForeignKey("CartItemProductId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("FinalProject4790.Models.Domain.CreditTransaction", b =>
+                {
+                    b.HasOne("FinalProject4790.Models.Domain.Order", "Order")
+                        .WithMany()
+                        .HasForeignKey("OrderId1");
                 });
 
             modelBuilder.Entity("FinalProject4790.Models.Domain.OrderLineItem", b =>

@@ -20,7 +20,7 @@ namespace FinalProject4790.Models.Domain
         [BindNever]
         [ScaffoldColumn(false)]
         public DateTime OrderDate { get; set; }
-        public string CreditTransactionId { get; set; }
+        public int CreditTransactionId { get; set; }
         [Display(Name = "First Name")]
         [StringLength(50)]
         [Required(ErrorMessage = "Please Enter First Name")]

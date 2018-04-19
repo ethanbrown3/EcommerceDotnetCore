@@ -72,17 +72,5 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
             Assert.AreEqual(creditTransaction.OrderId, order.OrderId);
         }   
 
-        [Test]
-        public void CreditTransaction_SetGetSeller()
-        {
-            var seller = new Seller();
-            seller.SellerId = 1;
-
-            creditTransaction.Seller = seller;
-            creditTransaction.SellerId = seller.SellerId;
-
-            Assert.AreEqual(creditTransaction.Seller, seller);
-            Assert.AreEqual(creditTransaction.SellerId, seller.SellerId);
-        }
     }
 }

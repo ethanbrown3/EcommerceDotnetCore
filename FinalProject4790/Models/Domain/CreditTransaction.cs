@@ -11,7 +11,5 @@ namespace FinalProject4790.Models.Domain
         public bool Paid { get; set; }
         public int OrderId { get; set; }
         public Order Order { get; set; }
-        public int SellerId { get; set; }
-        public Seller Seller { get; set; }
     }
 }
