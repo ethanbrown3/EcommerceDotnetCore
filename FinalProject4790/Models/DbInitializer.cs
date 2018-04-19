@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FinalProject4790.Models.Domain;
+using Microsoft.AspNetCore.Identity;
 
 namespace FinalProject4790.Models
 {
@@ -65,6 +66,7 @@ namespace FinalProject4790.Models
                     }
                 );
             }
+
             context.SaveChanges();
 
         }
@@ -92,6 +94,33 @@ namespace FinalProject4790.Models
                 }
 
                 return sellers;
+            }
+        }
+
+        public static void SeedAdmin(RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager)
+        {
+
+            if (!roleManager.RoleExistsAsync("Admins").Result)
+            {
+                IdentityRole role = new IdentityRole();
+                role.Name = "Admins";
+                IdentityResult roleResult = roleManager.
+                CreateAsync(role).Result;
+            }
+            if (userManager.FindByNameAsync("Admin").Result == null)
+            {
+                IdentityUser user = new IdentityUser();
+                user.UserName = "Admin";
+                user.Email = "admin@admin.com";
+
+                IdentityResult result = userManager.CreateAsync
+                (user, "Password123!").Result;
+
+                if (result.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user,
+                                        "Admins").Wait();
+                }
             }
         }
     }

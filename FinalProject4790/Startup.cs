@@ -39,7 +39,8 @@ namespace FinalProject4790
             services.AddTransient<ISellerRepository, SellerRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IOrderRepository, OrderRepository>();
-            
+            services.AddTransient<ICreditTransactionRepository, CreditTransactionRepository>();
+
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
             services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
@@ -51,7 +52,7 @@ namespace FinalProject4790
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             StripeConfiguration.SetApiKey(Configuration.GetSection("Stripe")["SecretKey"]);
             // order is important
@@ -60,6 +61,9 @@ namespace FinalProject4790
             app.UseStaticFiles();
             app.UseSession();
             app.UseAuthentication();
+            
+            DbInitializer.SeedAdmin(roleManager, userManager);
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
