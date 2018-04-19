@@ -39,5 +39,21 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
             Assert.AreEqual(lineItem.CartItemProduct, product);
         }
 
+        [Test]
+        public void CartItem_SetGetQuantity()
+        {
+            lineItem.CartItemQuantity = 100;
+
+            Assert.AreEqual(lineItem.CartItemQuantity, 100);
+        }
+
+        [Test]
+        public void CartItem_SetGetShoppingCartId()
+        {
+            lineItem.CartShoppingCartId = "cartIDTest";
+
+            Assert.AreEqual(lineItem.CartShoppingCartId, "cartIDTest");
+        }
+
     }
 }
