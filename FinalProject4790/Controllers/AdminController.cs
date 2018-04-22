@@ -24,6 +24,10 @@ namespace FinalProject4790.Controllers
             return View();
         }
 
+        /// <summary>
+        /// UserManagment Screen
+        /// </summary>
+        /// <returns>UserManagment View</returns>
         public IActionResult UserManagement()
         {
             var users = _userManager.Users;
@@ -31,11 +35,20 @@ namespace FinalProject4790.Controllers
             return View(users);
         }
 
+        /// <summary>
+        /// Add user screen
+        /// </summary>
+        /// <returns>AddUser View</returns>
         public IActionResult AddUser()
         {
             return View();
         }
 
+        /// <summary>
+        /// Add User to Identity
+        /// </summary>
+        /// <param name="addUserViewModel"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> AddUser(AddUserViewModel addUserViewModel)
         {
@@ -61,6 +74,11 @@ namespace FinalProject4790.Controllers
             return View(addUserViewModel);
         }
 
+        /// <summary>
+        /// Edit User Form
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>EditUser View</returns>
         public async Task<IActionResult> EditUser(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
@@ -71,6 +89,13 @@ namespace FinalProject4790.Controllers
             return View(user);
         }
 
+        /// <summary>
+        /// Update User by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="UserName"></param>
+        /// <param name="Email"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> EditUser(string id, string UserName, string Email)
         {
@@ -119,6 +144,10 @@ namespace FinalProject4790.Controllers
             return View("UserManagement", _userManager.Users);
         }
 
+        /// <summary>
+        /// RoleManagement Screen
+        /// </summary>
+        /// <returns></returns>
         public IActionResult RoleManagement()
         {
             var roles = _roleManager.Roles;
@@ -127,6 +156,11 @@ namespace FinalProject4790.Controllers
 
         public IActionResult AddNewRole() => View();
 
+        /// <summary>
+        /// Add new role to identity
+        /// </summary>
+        /// <param name="addRoleViewModel"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> AddNewRole(AddRoleViewModel addRoleViewModel)
         {
@@ -152,6 +186,11 @@ namespace FinalProject4790.Controllers
             return RedirectToAction("RoleManagement", _roleManager.Roles);
         }
 
+        /// <summary>
+        /// Edit role screen 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> EditRole(string id)
         {
             var role = await _roleManager.FindByIdAsync(id);
@@ -176,6 +215,11 @@ namespace FinalProject4790.Controllers
             return View(editRoleViewModel);
         }
 
+        /// <summary>
+        /// Edit role in identity
+        /// </summary>
+        /// <param name="editRoleViewModel"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> EditRole(EditRoleViewModel editRoleViewModel)
         {
@@ -200,6 +244,11 @@ namespace FinalProject4790.Controllers
 
         }
 
+        /// <summary>
+        /// Delete role
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> DeleteRole(string id)
         {
@@ -218,7 +267,11 @@ namespace FinalProject4790.Controllers
             return View("RoleManagement", _roleManager.Roles);
         }
 
-
+        /// <summary>
+        /// Add a user to a role by role Id
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <returns></returns>
         public async Task<IActionResult> AddUserToRole(string roleId)
         {
             var role = await _roleManager.FindByIdAsync(roleId);
@@ -239,6 +292,11 @@ namespace FinalProject4790.Controllers
             return View(addUserToRoleViewModel);
         }
 
+        /// <summary>
+        /// Add user to role in identity given a UserRoleViewModel
+        /// </summary>
+        /// <param name="userRoleViewModel"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> AddUserToRole(UserRoleViewModel userRoleViewModel)
         {
@@ -259,6 +317,11 @@ namespace FinalProject4790.Controllers
             return RedirectToAction("RoleManagement", _roleManager.Roles);
         }
 
+        /// <summary>
+        /// Delete user from role view
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <returns></returns>
         public async Task<IActionResult> DeleteUserFromRole(string roleId)
         {
             var role = await _roleManager.FindByIdAsync(roleId);
@@ -279,6 +342,11 @@ namespace FinalProject4790.Controllers
             return View(addUserToRoleViewModel);
         }
 
+        /// <summary>
+        /// Delete user from role using UserRoleViewModel
+        /// </summary>
+        /// <param name="userRoleViewModel"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> DeleteUserFromRole(UserRoleViewModel userRoleViewModel)
         {

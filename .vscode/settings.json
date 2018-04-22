@@ -1,4 +1,4 @@
 {
     "dotnet-test-explorer.testProjectPath" : "/Users/ethanbrown/Projects/cs4790/4790FinalProject/FinalProject4790.Tests/",
-    "dotnet-test-explorer.useTreeView" : false
+    "dotnet-test-explorer.useTreeView" : true
 }
