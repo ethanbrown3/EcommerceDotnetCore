@@ -1,0 +1,40 @@
+@model IEnumerable<Seller>
+
+<h2>Seller Manager</h2>
+
+@if (!Model.Any())
+{
+    <tr><td colspan="3" class="text-center">No Sellers Found</td></tr>
+}
+else
+{
+    <table class="table table-condensed table-bordered" header header-content="User Management">
+        <tr>
+            <th>Seller ID</th>
+            <th>Seller Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+
+        @foreach (Seller seller in Model)
+        {
+            <tr>
+                <td>@seller.SellerId</td>
+                <td>@seller.SellerName</td>
+                <td>@seller.SellerDescription</td>
+                <td>
+                    <form asp-controller="Admin" asp-action="DeleteSeller" asp-route-userid="@seller.SellerId" method="post">
+                        <a class="btn btn-sm btn-primary" asp-action="EditSeller" asp-route-id="@seller.SellerId">Edit</a>
+                        <button type="submit" onclick="return confirm('Do you really want to delete this seller?');" class="btn btn-sm btn-danger">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+}
+
+<p>
+    <a class="btn btn-primary" asp-action="AddSeller">Add new seller</a>
+</p>

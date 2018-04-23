@@ -42,5 +42,16 @@ namespace FinalProject4790.Models.DomainServices
         {
             return _appDbContext.Sellers.FirstOrDefault(s => s.SellerId == sellerId);
         }
+
+        /// <summary>
+        /// Add Seller to DB
+        /// </summary>
+        /// <param name="seller"></param>
+        /// <returns></returns>
+        public void AddSeller(Seller seller)
+        {
+            _appDbContext.Sellers.Add(seller);
+            _appDbContext.SaveChanges();
+        }
     }
 }

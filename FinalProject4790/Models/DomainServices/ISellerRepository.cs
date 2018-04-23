@@ -13,5 +13,7 @@ namespace FinalProject4790.Models.DomainServices
     {
         IEnumerable<Seller> GetAllSellers();
         Seller GetSellerById(int orderId);
+        void AddSeller(Seller seller);
+
     }
 }

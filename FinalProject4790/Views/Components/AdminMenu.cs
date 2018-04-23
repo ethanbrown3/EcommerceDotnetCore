@@ -18,7 +18,13 @@ namespace FinalProject4790.Views.Components
                 {
                     DisplayValue = "Role management",
                     ActionValue = "RoleManagement"
-                }};
+                },
+                new AdminMenuItem()
+                {
+                    DisplayValue = "Sellers management",
+                    ActionValue = "SellerManagement"
+                }
+            };
 
             return View(menuItems);
         }

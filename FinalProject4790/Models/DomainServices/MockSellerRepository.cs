@@ -41,5 +41,10 @@ namespace FinalProject4790.Models.DomainServices
         {
             return _Sellers.FirstOrDefault(s => s.SellerId == sellerId);
         }
+
+        public void AddSeller(Seller seller)
+        {
+            _Sellers.Add(seller);
+        }
     }
 }

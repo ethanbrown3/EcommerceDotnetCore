@@ -18,6 +18,7 @@ namespace FinalProject4790.Tests.Controllers.Tests
         private MockRoleManager roleManager;
         private MockUserManager userManager;
         private AdminController controller;
+        private ISellerRepository sellerRepository;
         private LoginViewModel validLoginViewModel;
         private LoginViewModel invalidLoginViewModel;
         
@@ -32,8 +33,9 @@ namespace FinalProject4790.Tests.Controllers.Tests
 
             userManager = new  MockUserManager();
             roleManager = new MockRoleManager();
-
-            controller = new AdminController(userManager, roleManager);
+            sellerRepository = new MockSellerRepository();
+            
+            controller = new AdminController(userManager, roleManager, sellerRepository);
             validLoginViewModel = new LoginViewModel()
             {
                 UserName = "username",
