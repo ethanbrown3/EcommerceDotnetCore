@@ -7,6 +7,17 @@ DB Schema Diagram v2
 Screen Flow Diagram v2
 ![alt text](https://github.com/web4790-spr-2018/final-project-ethanbrown3/blob/master/FinalProject4790/Docs/ScreenFlow.png?raw=true "Screen Flow")
 
+## Admin Login
+Username: admin
+Email: admin@admin.com
+Password: Password123!
+
+## Credit Card Mock
+number: 4242 4242 4242 4242
+exp: anything
+security code : anything
+
+
 # Final Project
 ## CS-4790 Spring 2018
 
