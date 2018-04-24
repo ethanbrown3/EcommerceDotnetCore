@@ -22,7 +22,7 @@ namespace FinalProject4790.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            var sellers = _sellerRepository.GetAllSellers().OrderBy(s => s.SellerName);
+            var sellers = _sellerRepository.GetAllEnabledSellers().OrderBy(s => s.SellerName);
 
             var homeViewModel = new HomeViewModel()
             {

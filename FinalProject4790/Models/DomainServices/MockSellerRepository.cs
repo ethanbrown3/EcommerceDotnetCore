@@ -37,6 +37,11 @@ namespace FinalProject4790.Models.DomainServices
             return _Sellers;
         }
 
+        public IEnumerable<Seller> GetAllEnabledSellers()
+        {
+            return _Sellers.Where(s => s.enabled == true);
+        }
+
         public Seller GetSellerById(int sellerId)
         {
             return _Sellers.FirstOrDefault(s => s.SellerId == sellerId);

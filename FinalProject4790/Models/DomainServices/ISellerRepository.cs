@@ -12,8 +12,10 @@ namespace FinalProject4790.Models.DomainServices
     public interface ISellerRepository
     {
         IEnumerable<Seller> GetAllSellers();
+        IEnumerable<Seller> GetAllEnabledSellers();
         Seller GetSellerById(int orderId);
         void AddSeller(Seller seller);
+
 
     }
 }

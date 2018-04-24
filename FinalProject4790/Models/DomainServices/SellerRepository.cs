@@ -34,6 +34,15 @@ namespace FinalProject4790.Models.DomainServices
         }
         
         /// <summary>
+        /// Get all sellers where enabled == true
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Seller> GetAllEnabledSellers()
+        {
+            return _appDbContext.Sellers.Where(s => s.enabled == true);
+        }
+
+        /// <summary>
         /// Get the seller with matching sellerId
         /// </summary>
         /// <param name="sellerId"></param>

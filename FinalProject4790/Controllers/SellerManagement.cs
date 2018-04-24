@@ -18,7 +18,7 @@ namespace FinalProject4790.Controllers
         /// <returns>SellerManagment View</returns>
         public IActionResult Index()
         {
-            var sellers = _sellerRepository.GetAllSellers();
+            var sellers = _sellerRepository.GetAllEnabledSellers();
 
             return View(sellers);
         }
