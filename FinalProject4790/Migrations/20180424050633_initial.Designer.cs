@@ -11,9 +11,10 @@ using System;
 namespace FinalProject4790.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180424050633_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -160,8 +161,6 @@ namespace FinalProject4790.Migrations
                     b.Property<string>("SellerDescription");
 
                     b.Property<string>("SellerName");
-
-                    b.Property<bool>("enabled");
 
                     b.HasKey("SellerId");
 

@@ -11,8 +11,8 @@ using System;
 namespace FinalProject4790.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20180419060439_initialmigration")]
-    partial class initialmigration
+    [Migration("20180424050757_addedEnabledToSeller")]
+    partial class addedEnabledToSeller
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -161,6 +161,8 @@ namespace FinalProject4790.Migrations
                     b.Property<string>("SellerDescription");
 
                     b.Property<string>("SellerName");
+
+                    b.Property<bool>("enabled");
 
                     b.HasKey("SellerId");
 

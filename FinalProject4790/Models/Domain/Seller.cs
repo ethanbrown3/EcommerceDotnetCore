@@ -14,6 +14,7 @@ namespace FinalProject4790.Models.Domain
         public int SellerId { get; set; }
         public string SellerName { get; set; }
         public string SellerDescription { get; set; }
+        public bool enabled { get; set; }
         
         public List<Product> Products { get; set; }
     }
