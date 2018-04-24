@@ -79,10 +79,10 @@ namespace FinalProject4790.Models
                 {
                     var sellerList = new Seller[]
                     {
-                        new Seller { SellerName = "Paintball Planet", SellerDescription = "Paintball Retailer"},
-                        new Seller { SellerName = "Wayne Enterprises", SellerDescription = "Splunking Gear"},
-                        new Seller { SellerName = "Stark Industries", SellerDescription = "Science Supply"},
-                        new Seller { SellerName = "Ace Chemicals", SellerDescription = "Cleaning Products"}
+                        new Seller { SellerName = "Paintball Planet", SellerDescription = "Paintball Retailer", enabled = true},
+                        new Seller { SellerName = "Wayne Enterprises", SellerDescription = "Splunking Gear", enabled = true},
+                        new Seller { SellerName = "Stark Industries", SellerDescription = "Science Supply", enabled = true},
+                        new Seller { SellerName = "Ace Chemicals", SellerDescription = "Cleaning Products", enabled = true}
                     };
 
                     sellers = new Dictionary<string, Seller>();
