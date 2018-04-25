@@ -10,7 +10,7 @@ using Moq;
 namespace FinalProject4790.Tests.Controllers.Tests
 {
     /// <summary>
-    /// Mocked Identity RoleManager using Moq.
+    /// Mocked Identity UserManager using Moq.
     /// </summary>
     public class MockUserManager : UserManager<IdentityUser>
     {
