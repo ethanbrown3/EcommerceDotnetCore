@@ -39,7 +39,7 @@ namespace FinalProject4790.Models
                         ProductName = "Tumbler",
                         ProductShortDescription = "Off road vehicle. Comes in black.",
                         ProductLongDescription = "The Tumbler has a pair of machine guns mounted in the nose of the car between the front wheels. In \"Attack\" mode, the driver's seat moves to the center of the car, and the driver is repositioned to lie face-down with his head in the center section between the front wheels. This serves two main purposes: first, it provides more substantial protection with the driver shielded by multiple layers of armor plating. Second, the low-down, centralized driving position makes extreme precision maneuvers easier to perform, while lying prone reduces the risk of injury a driver faces when making these maneuvers.",
-                        ProductPrice = 25000000.00M,
+                        ProductPrice = 250000.00M,
                         ProductImgUrl="http://media.comicbook.com/uploads1/2015/01/batmobile-tumbler-118336.jpg",
                         ProductCount=3,
                         IsEdible=false
@@ -49,7 +49,7 @@ namespace FinalProject4790.Models
                         ProductName = "Arc Reactor",
                         ProductShortDescription = "Powers a heart for over 50 lifetimes.",
                         ProductLongDescription = "Engineered by Tony Stark himself in a cave, with scraps.",
-                        ProductPrice = 100000000000.00M,
+                        ProductPrice = 250000.00M,
                         ProductImgUrl="https://i0.wp.com/lanteanar-automated-transfer-1.blog/wp-content/uploads/2018/01/iron-man-arc-reactor-mk1-3d-model-max-obj-fbx-mtl-1.jpg?ssl=1",
                         ProductCount=1,
                         IsEdible=false
