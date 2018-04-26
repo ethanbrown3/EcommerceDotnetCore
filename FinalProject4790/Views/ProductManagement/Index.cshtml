@@ -1,0 +1,58 @@
+@model IEnumerable<Product>
+
+<h2>Product Manager</h2>
+
+@if (!Model.Any())
+{
+    <tr><td colspan="3" class="text-center">No Products Found</td></tr>
+}
+else
+{
+    <table class="table table-condensed table-bordered" header header-content="User Management">
+        <tr>
+            <th>Products ID</th>
+            <th>Products Name</th>
+            <th>Short Description</th>
+            <th>Price</th>
+            <th>Enabled</th>
+            <th>Actions</th>
+        </tr>
+
+        @foreach (Product product in Model)
+        {
+            <tr>
+                <td>@product.ProductId</td>
+                <td>@product.ProductName</td>
+                <td>@product.ProductShortDescription</td>
+                <td>@product.ProductPrice.ToString("#,##0.00")</td>
+                <td>@product.enabled</td>
+                @if (product.enabled)
+                {
+                    <td>
+                        <form  asp-action="DisableProduct" asp-route-id="@product.ProductId" method="post">
+                            <a class="btn btn-sm btn-primary" asp-action="EditProduct" asp-route-id="@product.ProductId">Edit</a>
+                                <button type="submit" onclick="return confirm('Do you really want to disable this product?');" class="btn btn-sm btn-danger">
+                                    Disable
+                                </button>
+                        </form>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <form  asp-action="EnableProduct" asp-route-id="@product.ProductId" method="post">
+                            <a class="btn btn-sm btn-primary" asp-action="EditProduct" asp-route-id="@product.ProductId">Edit</a>
+                                <button type="submit" onclick="return confirm('Do you really want to enable this product?');" class="btn btn-sm btn-danger">
+                                    Enable
+                                </button>
+                        </form>
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+}
+
+<p>
+    <a class="btn btn-primary" asp-action="AddProduct">Add new product</a>
+</p>
