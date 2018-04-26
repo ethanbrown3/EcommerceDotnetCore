@@ -51,5 +51,23 @@ namespace FinalProject4790.Models.DomainServices
         {
             _Sellers.Add(seller);
         }
+
+        public void DisableSeller(int id)
+        {
+            var seller = GetSellerById(id);
+            if (seller != null)
+            {
+                seller.enabled = false;
+            }
+        }
+
+        public void EnableSeller(int id)
+        {
+            var seller = GetSellerById(id);
+            if (seller != null)
+            {
+                seller.enabled = true;
+            }
+        }
     }
 }

@@ -15,7 +15,8 @@ namespace FinalProject4790.Models.DomainServices
         IEnumerable<Seller> GetAllEnabledSellers();
         Seller GetSellerById(int orderId);
         void AddSeller(Seller seller);
-
+        void DisableSeller(int id);
+        void EnableSeller(int id);
 
     }
 }

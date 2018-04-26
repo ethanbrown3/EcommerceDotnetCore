@@ -41,6 +41,34 @@ namespace FinalProject4790.Models.DomainServices
         {
             return _appDbContext.Sellers.Where(s => s.enabled == true);
         }
+        
+        /// <summary>
+        /// Disable Seller by id
+        /// </summary>
+        /// <param name="id"></param>
+        public void DisableSeller(int id)
+        {
+            var result = GetSellerById(id);
+            if (result != null)
+            {
+                result.enabled = false;
+                _appDbContext.SaveChanges();
+            }
+        }
+
+        /// <summary>
+        /// Enable Seller by id
+        /// </summary>
+        /// <param name="id"></param>
+        public void EnableSeller(int id)
+        {
+            var result = GetSellerById(id);
+            if (result != null)
+            {
+                result.enabled = true;
+                _appDbContext.SaveChanges();
+            }
+        }
 
         /// <summary>
         /// Get the seller with matching sellerId

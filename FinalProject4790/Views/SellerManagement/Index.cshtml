@@ -13,6 +13,7 @@ else
             <th>Seller ID</th>
             <th>Seller Name</th>
             <th>Description</th>
+            <th>Enabled</th>
             <th>Actions</th>
         </tr>
 
@@ -22,14 +23,29 @@ else
                 <td>@seller.SellerId</td>
                 <td>@seller.SellerName</td>
                 <td>@seller.SellerDescription</td>
-                <td>
-                    <form asp-controller="Admin" asp-action="DeleteSeller" asp-route-userid="@seller.SellerId" method="post">
-                        <a class="btn btn-sm btn-primary" asp-action="EditSeller" asp-route-id="@seller.SellerId">Edit</a>
-                        <button type="submit" onclick="return confirm('Do you really want to delete this seller?');" class="btn btn-sm btn-danger">
-                            Delete
-                        </button>
-                    </form>
-                </td>
+                <td>@seller.enabled</td>
+                @if (seller.enabled)
+                {
+                    <td>
+                        <form  asp-action="DisableSeller" asp-route-id="@seller.SellerId" method="post">
+                            <a class="btn btn-sm btn-primary" asp-action="EditSeller" asp-route-id="@seller.SellerId">Edit</a>
+                                <button type="submit" onclick="return confirm('Do you really want to disable this seller?');" class="btn btn-sm btn-danger">
+                                    Disable
+                                </button>
+                        </form>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <form  asp-action="EnableSeller" asp-route-id="@seller.SellerId" method="post">
+                            <a class="btn btn-sm btn-primary" asp-action="EditSeller" asp-route-id="@seller.SellerId">Edit</a>
+                                <button type="submit" onclick="return confirm('Do you really want to enable this seller?');" class="btn btn-sm btn-danger">
+                                    Enable
+                                </button>
+                        </form>
+                    </td>
+                }
             </tr>
         }
     </table>

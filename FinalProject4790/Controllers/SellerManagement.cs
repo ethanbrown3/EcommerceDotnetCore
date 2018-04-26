@@ -1,9 +1,11 @@
 using FinalProject4790.Models.DomainServices;
 using FinalProject4790.Views.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinalProject4790.Controllers
 {
+    [Authorize(Roles="Admins")]
     public class SellerManagement : Controller
     {
 
@@ -18,7 +20,7 @@ namespace FinalProject4790.Controllers
         /// <returns>SellerManagment View</returns>
         public IActionResult Index()
         {
-            var sellers = _sellerRepository.GetAllEnabledSellers();
+            var sellers = _sellerRepository.GetAllSellers();
 
             return View(sellers);
         }
@@ -45,24 +47,34 @@ namespace FinalProject4790.Controllers
 
             _sellerRepository.AddSeller(sellerEditViewModel.Seller);
         
-            return RedirectToAction("SellerManagement", _sellerRepository.GetAllSellers());
+            return RedirectToAction("Index", _sellerRepository.GetAllSellers());
         }
 
-        // /// <summary>
-        // /// Delete Seller to DB
-        // /// </summary>
-        // /// <param name="addUserViewModel"></param>
-        // /// <returns></returns>
-        // [HttpPost]
-        // public IActionResult DeleteSeller(SellerEditViewModel sellerEditViewModel)
-        // {
-        //     if (!ModelState.IsValid) 
-        //         return View(sellerEditViewModel);
-
-        //     _sellerRepository.AddSeller(sellerEditViewModel.Seller);
+        /// <summary>
+        /// Disable Seller to DB
+        /// </summary>
+        /// <param name="addUserViewModel"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult DisableSeller(int id)
+        {
+            _sellerRepository.DisableSeller(id);
         
-        //     return RedirectToAction("SellerManagement", _sellerRepository.GetAllSellers());
-        // }
+            return RedirectToAction("Index", _sellerRepository.GetAllSellers());
+        }
+
+        /// <summary>
+        /// Enable Seller to DB
+        /// </summary>
+        /// <param name="addUserViewModel"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult EnableSeller(int id)
+        {
+            _sellerRepository.EnableSeller(id);
+        
+            return RedirectToAction("Index", _sellerRepository.GetAllSellers());
+        }
                 // /// <summary>
         // /// Edit User Form
         // /// </summary>
