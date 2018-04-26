@@ -41,13 +41,14 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
             Assert.AreEqual(order.OrderDate.Second, 5);
         }
 
-        // [Test]
-        // public void Order_SetGetUserId()
-        // {
-        //     order.UserId = 100;
-
-        //     Assert.AreEqual(order.UserId, 100);
-        // }
+        [Test]
+        public void Order_SetGetUserId()
+        {
+            var testId = "test100";
+            order.UserId = testId;
+            var result = order.UserId;
+            Assert.AreEqual(result, testId);
+        }
 
         [Test]
         public void Order_SetGetLineItems()
@@ -65,5 +66,94 @@ namespace FinalProject4790.Tests.Models.Domain.Tests
             Assert.AreEqual(result, 100);
         }
 
+        [Test]
+        public void Order_SetGetTotal()
+        {
+            var testTotal = 100;
+            order.OrderTotalInCents = testTotal;
+            var result = order.OrderTotalInCents;
+            Assert.AreEqual(testTotal, result);
+        }
+
+        [Test]
+        public void Order_GetSetCreditId()
+        {
+            var testId = 100;
+            order.CreditTransactionId = testId;
+            var result = order.CreditTransactionId;
+            Assert.AreEqual(testId, result);
+        }
+
+        [Test]
+        public void Order_GetSetFirstName()
+        {
+            var test = "Ethan";
+            order.OrderFirstName = test;
+            var result = order.OrderFirstName;
+            Assert.AreEqual(test, result);
+        }
+
+        [Test]
+        public void Order_GetSetLastName()
+        {
+            var test = "Brown";
+            order.OrderLastName = test;
+            var result = order.OrderLastName;
+            Assert.AreEqual(test, result);
+        }
+
+        [Test]
+        public void Order_GetSetAddress1()
+        {
+            var test = "123 Fake Street";
+            order.OrderStreetAddress1 = test;
+            var result = order.OrderStreetAddress1;
+            Assert.AreEqual(test, result);
+        }
+
+        [Test]
+        public void Order_GetSetAddress2()
+        {
+            var test = "Suite 1";
+            order.OrderStreetAddress2 = test;
+            var result = order.OrderStreetAddress2;
+            Assert.AreEqual(test, result);
+        }
+
+        [Test]
+        public void Order_GetSetCity()
+        {
+            var test = "Gotham";
+            order.OrderCity = test;
+            var result = order.OrderCity;
+            Assert.AreEqual(test, result);
+        }
+
+        [Test]
+        public void Order_GetSetState()
+        {
+            var test = "UT";
+            order.OrderState = test;
+            var result = order.OrderState;
+            Assert.AreEqual(test, result);
+        }
+
+        [Test]
+        public void Order_GetSetZip()
+        {
+            var test = "88888";
+            order.OrderZip = test;
+            var result = order.OrderZip;
+            Assert.AreEqual(test, result);
+        }
+
+        [Test]
+        public void Order_GetSetPhone()
+        {
+            var test = "8011234567";
+            order.OrderPhoneNumber = test;
+            var result = order.OrderPhoneNumber;
+            Assert.AreEqual(test, result);
+        }
     }
 }

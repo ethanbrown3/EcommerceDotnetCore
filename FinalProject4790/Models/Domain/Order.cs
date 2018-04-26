@@ -47,6 +47,6 @@ namespace FinalProject4790.Models.Domain
         [DataType(DataType.PhoneNumber)]
         [Display(Name = "Phone Number")]
         public string OrderPhoneNumber { get; set; }
-        public string OrderUserId { get; set; }
+        public string UserId { get; set; }
     }
 }

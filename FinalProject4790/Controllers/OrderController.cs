@@ -92,7 +92,7 @@ namespace FinalProject4790.Controllers
             });
 
 
-            order.OrderUserId = user.Id;
+            order.UserId = user.Id;
             order.OrderTotalInCents = totalCharge;
             _creditTransactionRepository.CreateCreditTransactionFromStripeCharge(charge, order);
             _orderRepository.CreateOrder(order);
