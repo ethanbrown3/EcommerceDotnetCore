@@ -47,6 +47,22 @@ namespace FinalProject4790.Controllers
         
             return RedirectToAction("SellerManagement", _sellerRepository.GetAllSellers());
         }
+
+        // /// <summary>
+        // /// Delete Seller to DB
+        // /// </summary>
+        // /// <param name="addUserViewModel"></param>
+        // /// <returns></returns>
+        // [HttpPost]
+        // public IActionResult DeleteSeller(SellerEditViewModel sellerEditViewModel)
+        // {
+        //     if (!ModelState.IsValid) 
+        //         return View(sellerEditViewModel);
+
+        //     _sellerRepository.AddSeller(sellerEditViewModel.Seller);
+        
+        //     return RedirectToAction("SellerManagement", _sellerRepository.GetAllSellers());
+        // }
                 // /// <summary>
         // /// Edit User Form
         // /// </summary>

@@ -42,7 +42,9 @@ namespace FinalProject4790.Controllers
                 ModelState.AddModelError("", "Your cart is empty");
                 return RedirectToAction("Index", "ShoppingCart");
             }
-            return View();
+            var order = new Order();
+            order.OrderTotalInCents = (int)(_shoppingCart.GetShoppingCartTotal() * 100);
+            return View(order);
         }
 
         /// <summary>
@@ -79,7 +81,7 @@ namespace FinalProject4790.Controllers
                 Email = user.Email,
                 SourceToken = stripeToken
             });
-            var totalCharge = (int)_shoppingCart.GetShoppingCartTotal() * 100;
+            var totalCharge = (int)(_shoppingCart.GetShoppingCartTotal() * 100);
 
             // create the Stripe.net charge
             var charge = charges.Create(new StripeChargeCreateOptions {
@@ -91,7 +93,7 @@ namespace FinalProject4790.Controllers
 
 
             order.OrderUserId = user.Id;
-            
+            order.OrderTotalInCents = totalCharge;
             _creditTransactionRepository.CreateCreditTransactionFromStripeCharge(charge, order);
             _orderRepository.CreateOrder(order);
             _shoppingCart.ClearCart();

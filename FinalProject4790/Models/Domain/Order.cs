@@ -17,6 +17,7 @@ namespace FinalProject4790.Models.Domain
         [BindNever]
         public int OrderId { get; set; }
         public List<OrderLineItem> OrderLineItems { get; set; }
+        public int OrderTotalInCents{ get; set; }
         [BindNever]
         [ScaffoldColumn(false)]
         public DateTime OrderDate { get; set; }
