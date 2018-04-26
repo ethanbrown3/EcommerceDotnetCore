@@ -69,5 +69,10 @@ namespace FinalProject4790.Models.DomainServices
                 seller.enabled = true;
             }
         }
+
+        public void UpdateSeller(Seller seller)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -17,6 +17,6 @@ namespace FinalProject4790.Models.DomainServices
         void AddSeller(Seller seller);
         void DisableSeller(int id);
         void EnableSeller(int id);
-
+        void UpdateSeller(Seller seller);
     }
 }
