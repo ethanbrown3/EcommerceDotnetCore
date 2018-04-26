@@ -90,5 +90,11 @@ namespace FinalProject4790.Models.DomainServices
             _appDbContext.Sellers.Add(seller);
             _appDbContext.SaveChanges();
         }
+
+        public void UpdateSeller(Seller seller)
+        {
+            _appDbContext.Sellers.Update(seller);
+            _appDbContext.SaveChanges();
+        }
     }
 }
