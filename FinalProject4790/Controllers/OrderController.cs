@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using FinalProject4790.Auth;
 using FinalProject4790.Models.Domain;
 using FinalProject4790.Models.DomainServices;
 using Microsoft.AspNetCore.Authorization;
@@ -14,7 +15,7 @@ namespace FinalProject4790.Controllers
         private readonly IOrderRepository _orderRepository;
         private readonly ICreditTransactionRepository _creditTransactionRepository;
         private readonly ShoppingCart _shoppingCart;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<AppUser> _userManager;
         
         /// <summary>
         /// OrderController Constructor
@@ -22,7 +23,7 @@ namespace FinalProject4790.Controllers
         /// <param name="orderRepository"></param>
         /// <param name="shoppingCart"></param>
         /// <param name="userManager"></param>
-        public OrderController(IOrderRepository orderRepository, ShoppingCart shoppingCart, UserManager<IdentityUser> userManager, ICreditTransactionRepository creditTransactionRepository)
+        public OrderController(IOrderRepository orderRepository, ShoppingCart shoppingCart, UserManager<AppUser> userManager, ICreditTransactionRepository creditTransactionRepository)
         {
             _orderRepository = orderRepository;
             _shoppingCart = shoppingCart;
@@ -105,7 +106,7 @@ namespace FinalProject4790.Controllers
         /// Get current logged in user
         /// </summary>
         /// <returns></returns>
-        private Task<IdentityUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+        private Task<AppUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
         /// <summary>
         /// Checkout Complete view

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FinalProject4790.Auth;
 using FinalProject4790.Models.Domain;
 using Microsoft.AspNetCore.Identity;
 
@@ -97,7 +98,7 @@ namespace FinalProject4790.Models
             }
         }
 
-        public static void SeedAdmin(RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager)
+        public static void SeedAdmin(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager)
         {
 
             if (!roleManager.RoleExistsAsync("Admins").Result)
@@ -109,18 +110,45 @@ namespace FinalProject4790.Models
             }
             if (userManager.FindByNameAsync("Admin").Result == null)
             {
-                IdentityUser user = new IdentityUser();
+                AppUser user = new AppUser();
                 user.UserName = "Admin";
                 user.Email = "admin@admin.com";
+                user.SellerId = 0;
 
                 IdentityResult result = userManager.CreateAsync
                 (user, "Password123!").Result;
 
                 if (result.Succeeded)
                 {
-                    userManager.AddToRoleAsync(user,
-                                        "Admins").Wait();
+                    userManager.AddToRoleAsync(user,"Admins").Wait();
                 }
+            }
+
+            // if (!roleManager.RoleExistsAsync("SellerAdmin").Result)
+            // {
+            //     IdentityRole role = new IdentityRole();
+            //     role.Name = "SellerAdmin";
+            //     IdentityResult roleResult = roleManager.
+            //     CreateAsync(role).Result;
+            // }
+            // if (userManager.FindByNameAsync("SellerAdmin").Result == null)
+            // {
+                for (int i = 0; i < 4; i++)
+                {
+                    AppUser user = new AppUser();
+                    user.UserName = "SellerAdmin" + (i + 1).ToString();
+                    user.Email = "admin" + (i + 1).ToString() + "@admin.com";
+                    user.SellerId = i + 1;
+
+                    IdentityResult result = userManager.CreateAsync
+                    (user, "Password123!").Result;
+
+                    if (result.Succeeded)
+                    {
+                        userManager.AddToRoleAsync(user,
+                                            "SellerAdmin").Wait();
+                    }
+                // }
             }
         }
     }

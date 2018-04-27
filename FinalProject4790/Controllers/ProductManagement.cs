@@ -1,4 +1,7 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using FinalProject4790.Auth;
+using FinalProject4790.Models.Domain;
 using FinalProject4790.Models.DomainServices;
 using FinalProject4790.Views.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -12,9 +15,9 @@ namespace FinalProject4790.Controllers
     {
 
         private IProductRepository _productRepository;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<AppUser> _userManager;
 
-        public ProductManagement(IProductRepository productRepository, UserManager<IdentityUser> userManager)
+        public ProductManagement(IProductRepository productRepository, UserManager<AppUser> userManager)
         {
             _userManager = userManager;
             _productRepository = productRepository;
@@ -25,9 +28,13 @@ namespace FinalProject4790.Controllers
         /// <returns>SellerManagment View</returns>
         public IActionResult Index()
         {
-            var user = GetCurrentUserAsync();
-
-            var products = _productRepository.GetProductsBySellerId(user.Id);
+            var userGet = GetCurrentUserAsync();
+            var user = userGet.Result;
+            IEnumerable<Product> products;
+            if (user.SellerId == 0)
+                products = _productRepository.GetAllProducts();
+            else
+                products = _productRepository.GetProductsBySellerId(user.SellerId);
 
             return View(products);
         }
@@ -36,7 +43,7 @@ namespace FinalProject4790.Controllers
         /// Get current logged in user
         /// </summary>
         /// <returns>IdentityUser user</returns>
-        private Task<IdentityUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+        private Task<AppUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
         /// <summary>
         /// Add seller screen

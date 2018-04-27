@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using FinalProject4790.Auth;
 using FinalProject4790.Models.Domain;
 using FinalProject4790.Models.DomainServices;
 using FinalProject4790.Views.ViewModels;
@@ -12,10 +13,10 @@ namespace FinalProject4790.Controllers
     [Authorize(Roles="Admins")]
     public class AdminController : Controller
     {
-        private UserManager<IdentityUser> _userManager;
+        private UserManager<AppUser> _userManager;
         private RoleManager<IdentityRole> _roleManager;
         private ISellerRepository _sellerRepository;
-        public AdminController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, ISellerRepository sellerRepository)
+        public AdminController(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager, ISellerRepository sellerRepository)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -58,10 +59,11 @@ namespace FinalProject4790.Controllers
         {
             if (!ModelState.IsValid) return View(addUserViewModel);
 
-            var user = new IdentityUser()
+            var user = new AppUser()
             {
                 UserName = addUserViewModel.UserName,
-                Email = addUserViewModel.Email
+                Email = addUserViewModel.Email,
+                SellerId = addUserViewModel.SellerId
             };
 
             IdentityResult result = await _userManager.CreateAsync(user, addUserViewModel.Password);
@@ -131,7 +133,7 @@ namespace FinalProject4790.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteUser(string userId)
         {
-            IdentityUser user = await _userManager.FindByIdAsync(userId);
+            AppUser user = await _userManager.FindByIdAsync(userId);
 
             if (user != null)
             {

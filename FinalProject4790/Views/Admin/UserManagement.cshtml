@@ -1,6 +1,6 @@
 @using Microsoft.AspNetCore.Identity.EntityFrameworkCore
 @using Microsoft.AspNetCore.Identity
-@model IEnumerable<IdentityUser>
+@model IEnumerable<AppUser>
 
 <h2>User Manager</h2>
 
@@ -15,16 +15,17 @@ else
             <th>User ID</th>
             <th>User name</th>
             <th>Email</th>
+            <th>Seller Id</th>
             <th>Actions</th>
         </tr>
 
-        @foreach (IdentityUser user in Model)
+        @foreach (AppUser user in Model)
         {
             <tr>
                 <td>@user.Id</td>
                 <td>@user.UserName</td>
                 <td>@user.Email</td>
-
+                <td>@user.SellerId</td>
                 <td>
                     <form asp-controller="Admin" asp-action="DeleteUser" asp-route-userid="@user.Id" method="post">
                         <a class="btn btn-sm btn-primary" asp-action="EditUser" asp-route-id="@user.Id">Edit</a>

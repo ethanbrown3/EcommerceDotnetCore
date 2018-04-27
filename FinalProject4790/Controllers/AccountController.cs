@@ -1,4 +1,6 @@
 using System.Threading.Tasks;
+using FinalProject4790.Auth;
+using FinalProject4790.Models.Domain;
 using FinalProject4790.Views.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -9,9 +11,9 @@ namespace FinalProject4790.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
-        public AccountController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
+        private readonly SignInManager<AppUser> _signInManager;
+        private readonly UserManager<AppUser> _userManager;
+        public AccountController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager)
         {
             _signInManager = signInManager;
             _userManager = userManager;
@@ -63,7 +65,7 @@ namespace FinalProject4790.Controllers
             }
             else
             {
-                var user = new IdentityUser()
+                var user = new AppUser()
                 {
                     UserName = loginViewModel.UserName,
                     Email = loginViewModel.Email

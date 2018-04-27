@@ -6,13 +6,14 @@ using Microsoft.EntityFrameworkCore;
 using FinalProject4790.Models.Domain;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using FinalProject4790.Auth;
 
 namespace FinalProject4790.Models
 {
     /// <summary>
     /// Database Context for EntityFramework
     /// </summary>
-    public class AppDbContext : IdentityDbContext<IdentityUser>
+    public class AppDbContext : IdentityDbContext<AppUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -25,7 +26,6 @@ namespace FinalProject4790.Models
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderLineItem> OrderLineItems { get; set; }
         public DbSet<CreditTransaction> CreditTransactions { get; set; }
-
 
     }
 }

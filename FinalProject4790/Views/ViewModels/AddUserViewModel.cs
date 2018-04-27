@@ -18,5 +18,8 @@ namespace FinalProject4790.Views.ViewModels
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
+        [Required]
+        public int SellerId { get; set; }
+
     }
 }

@@ -5,9 +5,9 @@
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.Identity.EntityFrameworkCore
 
-@inject SignInManager<IdentityUser> SignInManager
+@inject SignInManager<AppUser> SignInManager
 @inject IAuthorizationService AuthorizationService
-@inject UserManager<IdentityUser> UserManager
+@inject UserManager<AppUser> UserManager
 
 <!DOCTYPE html>
 <html>
@@ -33,6 +33,9 @@
                             <a asp-controller="SellerManagement"
                                asp-action="Index">Seller Management</a>
                         </li>
+                    }
+                    @if (User.IsInRole("Admins") || User.IsInRole("SellerAdmin"))
+                    {
                         <li class="dropdown">
                             <a asp-controller="ProductManagement"
                                asp-action="Index">Product Management</a>

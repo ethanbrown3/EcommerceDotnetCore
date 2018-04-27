@@ -12,6 +12,8 @@ using FinalProject4790.Models;
 using FinalProject4790.Models.DomainServices;
 using Microsoft.AspNetCore.Identity;
 using Stripe;
+using FinalProject4790.Models.Domain;
+using FinalProject4790.Auth;
 
 namespace FinalProject4790
 {
@@ -30,7 +32,7 @@ namespace FinalProject4790
             services.AddDbContext<AppDbContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            services.AddIdentity<AppUser, IdentityRole>(options =>
                 {
                     options.User.RequireUniqueEmail = true;
                 })
@@ -52,7 +54,7 @@ namespace FinalProject4790
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             StripeConfiguration.SetApiKey(Configuration.GetSection("Stripe")["SecretKey"]);
             // order is important
