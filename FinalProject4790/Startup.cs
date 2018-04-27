@@ -82,7 +82,7 @@ namespace FinalProject4790
                 routes.MapRoute(
                     "ShoppingCart",                                              // Route name
                     "{controller}/{action}",                           // URL with parameters
-                    new { controller = "SoppingCart", action = "Index" }  // Parameter defaults
+                    new { controller = "ShoppingCart", action = "Index" }  // Parameter defaults
                 );
             });
         }
