@@ -7,15 +7,35 @@ DB Schema Diagram v2
 Screen Flow Diagram v2
 ![alt text](https://github.com/web4790-spr-2018/final-project-ethanbrown3/blob/master/FinalProject4790/Docs/ScreenFlow.png?raw=true "Screen Flow")
 
+## User Types
+There are 3 user types for the application. Admin, Seller Admin and Customer. Anyone can register as a customer. Only the Admin can create Seller Admins. Admins may create sellers and products. Seller Admins may create products. All user types may checkout a shopping cart.
+
 ## Admin Login
-Username: admin
-Email: admin@admin.com
-Password: Password123!
+* Username: admin
+* Email: admin@admin.com
+* Password: Password123!
+
+## Seller Logins
+* Username: SellerAdmin1
+* Email: admin1@admin.com
+* Password: Password123!
+
+* Username: SellerAdmin2
+* Email: admin2@admin.com
+* Password: Password123!
+
+* Username: SellerAdmin3
+* Email: admin3@admin.com
+* Password: Password123!
+
+* Username: SellerAdmin4
+* Email: admin4@admin.com
+* Password: Password123!
 
 ## Credit Card Mock
-number: 4242 4242 4242 4242
-exp: anything
-security code : anything
+* number: 4242 4242 4242 4242
+* exp: anything
+* security code : anything
 
 
 # Final Project
