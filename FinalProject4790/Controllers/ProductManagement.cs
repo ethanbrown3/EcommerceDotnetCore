@@ -65,7 +65,16 @@ namespace FinalProject4790.Controllers
             if (!ModelState.IsValid) 
                 return View(productEditViewModel);
 
-            _productRepository.AddProduct(productEditViewModel.Product);
+            var getUser = GetCurrentUserAsync();
+            var user = getUser.Result;
+            var productToAdd = productEditViewModel.Product;
+
+            // ensure if the user is a seller that they can only add to their own products
+            if (user.SellerId != 0)
+                productToAdd.SellerId = user.SellerId;
+
+
+            _productRepository.AddProduct(productToAdd);
         
             return RedirectToAction("Index", _productRepository.GetAllProducts());
         }
