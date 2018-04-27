@@ -37,7 +37,6 @@ There are 3 user types for the application. Admin, Seller Admin and Customer. An
 * exp: anything
 * security code : anything
 
-
 # Final Project
 ## CS-4790 Spring 2018
 
