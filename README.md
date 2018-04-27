@@ -33,6 +33,7 @@ There are 3 user types for the application. Admin, Seller Admin and Customer. An
 * Password: Password123!
 
 ## Credit Card Mock
+I used Strip.Net's test gateway for my website. It actually stores a lot of information and could be used to keep track of customers and emails. 
 * number: 4242 4242 4242 4242
 * exp: anything
 * security code : anything
