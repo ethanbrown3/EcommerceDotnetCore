@@ -13,6 +13,12 @@ namespace FinalProject4790.Models.DomainServices
     {
         IEnumerable<Product> GetAllProducts();
         IEnumerable<Product> GetProductsBySellerId(int sellerId);
+        IEnumerable<Product> GetProductsEnabledBySellerId(int sellerId);
         Product GetProductById(int id);
+        void AddProduct(Product product);
+        void DisableProduct(int id);
+        void EnableProduct(int id);
+        void UpdateProduct(Product product);
+        
     }
 }

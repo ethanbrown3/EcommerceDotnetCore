@@ -27,7 +27,7 @@ namespace FinalProject4790.Controllers
         /// <returns>ProductsList View</returns>
         public IActionResult ProductList(int id, string sellerName)
         {
-            var products = _productRepository.GetProductsBySellerId(id).OrderBy(p => p.ProductName );
+            var products = _productRepository.GetProductsEnabledBySellerId(id).OrderBy(p => p.ProductName );
             Console.Write(id);
             if (products == null)
                 return NotFound();

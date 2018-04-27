@@ -83,5 +83,30 @@ namespace FinalProject4790.Models.DomainServices
         {
             return _Products.FirstOrDefault(p => p.ProductId == productId);
         }
+
+        public void AddProduct(Product product)
+        {
+            _Products.Add(product);
+        }
+
+        public void DisableProduct(int id)
+        {
+            GetProductById(id).enabled = false;
+        }
+
+        public void EnableProduct(int id)
+        {
+            GetProductById(id).enabled = true;
+        }
+
+        public void UpdateProduct(Product product)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Product> GetProductsEnabledBySellerId(int sellerId)
+        {
+            return _Products.Where(p => p.SellerId == sellerId && p.enabled == true);
+        }
     }
 }

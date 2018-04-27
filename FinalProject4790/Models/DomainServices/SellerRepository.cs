@@ -91,6 +91,10 @@ namespace FinalProject4790.Models.DomainServices
             _appDbContext.SaveChanges();
         }
 
+        /// <summary>
+        /// Update given seller in Db
+        /// </summary>
+        /// <param name="seller"></param>
         public void UpdateSeller(Seller seller)
         {
             _appDbContext.Sellers.Update(seller);

@@ -47,6 +47,12 @@ namespace FinalProject4790.Models.DomainServices
             return _appDbContext.Products.Where(p => p.SellerId == sellerId);
         }
 
+
+        public IEnumerable<Product> GetProductsEnabledBySellerId(int sellerId)
+        {
+            return _appDbContext.Products.Where(p => p.SellerId == sellerId && p.enabled == true);
+        }
+
         /// <summary>
         /// Return product with matching productId
         /// </summary>
@@ -56,5 +62,54 @@ namespace FinalProject4790.Models.DomainServices
         {
             return _appDbContext.Products.FirstOrDefault(p => p.ProductId == productId);
         }
+
+        /// <summary>
+        /// Add Product to DB
+        /// </summary>
+        /// <param name="product">Product</param>
+        public void AddProduct(Product product)
+        {
+            _appDbContext.Products.Add(product);
+            _appDbContext.SaveChanges();
+        }
+
+        /// <summary>
+        /// Disable a product by id
+        /// </summary>
+        /// <param name="id">product id</param>
+        public void DisableProduct(int id)
+        {
+            var result = GetProductById(id);
+            if (result != null)
+            {
+                result.enabled = false;
+                _appDbContext.SaveChanges();
+            }
+        }
+
+        /// <summary>
+        /// Enable a product by id
+        /// </summary>
+        /// <param name="id">product id</param>
+        public void EnableProduct(int id)
+        {
+            var result = GetProductById(id);
+            if (result != null)
+            {
+                result.enabled = true;
+                _appDbContext.SaveChanges();
+            }
+        }
+
+        /// <summary>
+        /// Update given product in DB
+        /// </summary>
+        /// <param name="product"></param>
+        public void UpdateProduct(Product product)
+        {
+            _appDbContext.Products.Update(product);
+            _appDbContext.SaveChanges();
+        }
+
     }
 }

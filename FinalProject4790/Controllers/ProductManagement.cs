@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FinalProject4790.Controllers
 {
-    [Authorize(Roles="Admins")]
+    [Authorize(Roles="Admins, SellerAdmin")]
     public class ProductManagement : Controller
     {
 
@@ -23,9 +23,9 @@ namespace FinalProject4790.Controllers
             _productRepository = productRepository;
         }
         /// <summary>
-        /// SellerManagment Screen
+        /// Product Management Screen
         /// </summary>
-        /// <returns>SellerManagment View</returns>
+        /// <returns>ProductManagment View</returns>
         public IActionResult Index()
         {
             var userGet = GetCurrentUserAsync();
@@ -46,124 +46,89 @@ namespace FinalProject4790.Controllers
         private Task<AppUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
         /// <summary>
-        /// Add seller screen
+        /// Add Product screen
         /// </summary>
-        /// <returns>AddSeller View</returns>
+        /// <returns>AddProduct View</returns>
         public IActionResult AddProduct()
         {
             return View();
         }
 
-        // /// <summary>
-        // /// Add Seller to DB
-        // /// </summary>
-        // /// <param name="addUserViewModel"></param>
-        // /// <returns></returns>
-        // [HttpPost]
-        // public IActionResult AddSeller(SellerEditViewModel sellerEditViewModel)
-        // {
-        //     if (!ModelState.IsValid) 
-        //         return View(sellerEditViewModel);
+        /// <summary>
+        /// Add Product to DB
+        /// </summary>
+        /// <param name="ProductEditViewModel"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult AddProduct(ProductEditViewModel productEditViewModel)
+        {
+            if (!ModelState.IsValid) 
+                return View(productEditViewModel);
 
-        //     _productRepository.AddSeller(sellerEditViewModel.Seller);
+            _productRepository.AddProduct(productEditViewModel.Product);
         
-        //     return RedirectToAction("Index", _productRepository.GetAllSellers());
-        // }
+            return RedirectToAction("Index", _productRepository.GetAllProducts());
+        }
 
-        // /// <summary>
-        // /// Disable Seller to DB
-        // /// </summary>
-        // /// <param name="addUserViewModel"></param>
-        // /// <returns></returns>
-        // [HttpPost]
-        // public IActionResult DisableSeller(int id)
-        // {
-        //     _productRepository.DisableSeller(id);
+        /// <summary>
+        /// Disable Product to DB
+        /// </summary>
+        /// <param name="id">Product Id</param>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult DisableProduct(int id)
+        {
+            _productRepository.DisableProduct(id);
         
-        //     return RedirectToAction("Index", _productRepository.GetAllSellers());
-        // }
+            return RedirectToAction("Index", _productRepository.GetAllProducts());
+        }
 
-        // /// <summary>
-        // /// Enable Seller to DB
-        // /// </summary>
-        // /// <param name="addUserViewModel"></param>
-        // /// <returns></returns>
-        // [HttpPost]
-        // public IActionResult EnableSeller(int id)
-        // {
-        //     _productRepository.EnableSeller(id);
+        /// <summary>
+        /// Enable Product to DB
+        /// </summary>
+        /// <param name="addUserViewModel"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult EnableProduct(int id)
+        {
+            _productRepository.EnableProduct(id);
         
-        //     return RedirectToAction("Index", _productRepository.GetAllSellers());
-        // }
-                // /// <summary>
-        // /// Edit User Form
-        // /// </summary>
-        // /// <param name="id"></param>
-        // /// <returns>EditUser View</returns>
-        // public async Task<IActionResult> EditUser(string id)
-        // {
-        //     var user = await _userManager.FindByIdAsync(id);
+            return RedirectToAction("Index", _productRepository.GetAllProducts());
+        }
 
-        //     if (user == null)
-        //         return RedirectToAction("UserManagement", _userManager.Users);
+        /// <summary>
+        /// Edit Product Form
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Edit Product View</returns>
+        public IActionResult EditProduct(int id)
+        {
+            var product = _productRepository.GetProductById(id);
 
-        //     return View(user);
-        // }
+            var productEditViewModel = new ProductEditViewModel
+            {
+                Product = product
+            };
 
-        // /// <summary>
-        // /// Update User by id
-        // /// </summary>
-        // /// <param name="id"></param>
-        // /// <param name="UserName"></param>
-        // /// <param name="Email"></param>
-        // /// <returns></returns>
-        // [HttpPost]
-        // public async Task<IActionResult> EditUser(string id, string UserName, string Email)
-        // {
-        //     var user = await _userManager.FindByIdAsync(id);
+            return View(productEditViewModel);
+        }
 
-        //     if (user != null)
-        //     {
-        //         user.Email = Email;
-        //         user.UserName = UserName;
+        /// <summary>
+        /// Edit Product with productEditViewModel
+        /// </summary>
+        /// <param name="productEditViewModel"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult EditProduct(ProductEditViewModel productEditViewModel)
+        {
 
-        //         var result = await _userManager.UpdateAsync(user);
-
-        //         if (result.Succeeded)
-        //             return RedirectToAction("UserManagement", _userManager.Users);
-
-        //         ModelState.AddModelError("", "User not updated, something went wrong.");
-
-        //         return View(user);
-        //     }
-
-        //     return RedirectToAction("UserManagement", _userManager.Users);
-        // }
-
-        // /// <summary>
-        // /// Delete user by user id
-        // /// </summary>
-        // /// <param name="userId"></param>
-        // /// <returns>UserManagement View</returns>
-        // [HttpPost]
-        // public async Task<IActionResult> DeleteUser(string userId)
-        // {
-        //     IdentityUser user = await _userManager.FindByIdAsync(userId);
-
-        //     if (user != null)
-        //     {
-        //         IdentityResult result = await _userManager.DeleteAsync(user);
-        //         if (result.Succeeded)
-        //             return RedirectToAction("UserManagement");
-        //         else
-        //             ModelState.AddModelError("", "Something went wrong while deleting this user.");
-        //     }
-        //     else
-        //     {
-        //         ModelState.AddModelError("", "This user can't be found");
-        //     }
-        //     return View("UserManagement", _userManager.Users);
-        // }
-
+            if (ModelState.IsValid)
+            {
+                _productRepository.UpdateProduct(productEditViewModel.Product);
+                return RedirectToAction("Index");
+            }
+            return View(productEditViewModel);
+        }
+    
     }
 }

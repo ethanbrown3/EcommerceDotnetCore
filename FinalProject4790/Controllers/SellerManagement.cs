@@ -93,8 +93,12 @@ namespace FinalProject4790.Controllers
             return View(sellerEditViewModel);
         }
 
+        /// <summary>
+        /// Edit Seller with sellerEditViewModel
+        /// </summary>
+        /// <param name="sellerEditViewModel"></param>
+        /// <returns></returns>
         [HttpPost]
-        //public IActionResult EditPie([Bind("Pie")] PieEditViewModel pieEditViewModel)
         public IActionResult EditSeller(SellerEditViewModel sellerEditViewModel)
         {
 
